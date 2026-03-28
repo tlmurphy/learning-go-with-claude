@@ -226,11 +226,11 @@ func (t *TransactionalProductRepo) WithTransaction(fn TxFunc) error {
 
 // ProductFilter defines filter criteria for querying products.
 type ProductFilter struct {
-	Category    *string // nil means no filter
-	InStock     *bool   // nil means no filter
-	MinPrice    *int64  // nil means no minimum
-	MaxPrice    *int64  // nil means no maximum
-	NameContains string // empty means no filter
+	Category     *string // nil means no filter
+	InStock      *bool   // nil means no filter
+	MinPrice     *int64  // nil means no minimum
+	MaxPrice     *int64  // nil means no maximum
+	NameContains string  // empty means no filter
 }
 
 // FilterProducts takes a slice of products and a filter, returning only
@@ -252,11 +252,11 @@ func FilterProducts(products []*Product, filter ProductFilter) []*Product {
 // NullableProfile represents a user profile where some fields may be null.
 // This mimics how you'd handle nullable database columns in Go.
 type NullableProfile struct {
-	ID       string
-	Name     string
-	Bio      *string // nullable
-	Website  *string // nullable
-	Age      *int    // nullable
+	ID      string
+	Name    string
+	Bio     *string // nullable
+	Website *string // nullable
+	Age     *int    // nullable
 }
 
 // ProfileToMap converts a NullableProfile to a map[string]interface{},

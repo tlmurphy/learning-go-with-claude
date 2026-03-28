@@ -109,11 +109,12 @@ func MatrixMultiplyOptimized(a, b [][]int) [][]int {
 // pprof handlers on the given mux.
 //
 // Register these paths:
-//   /debug/pprof/           — index page
-//   /debug/pprof/cmdline    — command line arguments
-//   /debug/pprof/profile    — CPU profile
-//   /debug/pprof/symbol     — symbol lookup
-//   /debug/pprof/trace      — execution trace
+//
+//	/debug/pprof/           — index page
+//	/debug/pprof/cmdline    — command line arguments
+//	/debug/pprof/profile    — CPU profile
+//	/debug/pprof/symbol     — symbol lookup
+//	/debug/pprof/trace      — execution trace
 //
 // Hint: use net/http/pprof package's handler functions.
 // Since we can't import net/http/pprof in this file without side effects,

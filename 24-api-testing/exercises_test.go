@@ -126,7 +126,7 @@ func TestTestMiddleware(t *testing.T) {
 			t.Error("NextCalled should be false when middleware blocks the request.")
 		}
 		if result.StatusCode != http.StatusForbidden {
-			t.Errorf("Expected status 403, got %d. " +
+			t.Errorf("Expected status 403, got %d. "+
 				"Capture the status code from the recorder.", result.StatusCode)
 		}
 		if !strings.Contains(result.Body, "forbidden") {
@@ -319,7 +319,7 @@ func TestSetupTestServer(t *testing.T) {
 			t.Fatal("SetupTestServer should return a non-nil TestServer.")
 		}
 		if ts.Server == nil {
-			t.Fatal("TestServer.Server should not be nil. "+
+			t.Fatal("TestServer.Server should not be nil. " +
 				"Use httptest.NewServer to create it.")
 		}
 		defer ts.Server.Close()
@@ -432,8 +432,8 @@ func TestSetupTestServer(t *testing.T) {
 		defer resp.Body.Close()
 
 		if resp.Header.Get("X-Middleware") != "logging" {
-			t.Error("Middleware should be applied. "+
-				"Wrap your mux with the provided middlewares before creating the server. "+
+			t.Error("Middleware should be applied. " +
+				"Wrap your mux with the provided middlewares before creating the server. " +
 				"The LoggingMiddleware sets X-Middleware: logging.",
 			)
 		}

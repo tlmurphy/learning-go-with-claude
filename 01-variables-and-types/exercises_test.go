@@ -72,10 +72,10 @@ func TestGetStatusCategories(t *testing.T) {
 
 func TestSafeIntToInt8(t *testing.T) {
 	tests := []struct {
-		name      string
-		input     int
-		expected  int8
-		expectOK  bool
+		name     string
+		input    int
+		expected int8
+		expectOK bool
 	}{
 		{"zero", 0, 0, true},
 		{"positive in range", 42, 42, true},
@@ -107,12 +107,12 @@ func TestSafeIntToInt8(t *testing.T) {
 
 func TestStringByteRuneAnalysis(t *testing.T) {
 	tests := []struct {
-		name       string
-		input      string
-		wantBytes  int
-		wantRunes  int
-		wantFirst  rune
-		wantLast   rune
+		name      string
+		input     string
+		wantBytes int
+		wantRunes int
+		wantFirst rune
+		wantLast  rune
 	}{
 		{
 			name:      "ASCII only",
@@ -233,10 +233,10 @@ func TestAbsoluteZeroCelsius(t *testing.T) {
 
 func TestSwapInts(t *testing.T) {
 	tests := []struct {
-		name   string
-		a, b   int
-		wantA  int
-		wantB  int
+		name  string
+		a, b  int
+		wantA int
+		wantB int
 	}{
 		{"positive numbers", 1, 2, 2, 1},
 		{"with zero", 0, 42, 42, 0},
@@ -258,10 +258,10 @@ func TestSwapInts(t *testing.T) {
 
 func TestSwapStrings(t *testing.T) {
 	tests := []struct {
-		name   string
-		a, b   string
-		wantA  string
-		wantB  string
+		name  string
+		a, b  string
+		wantA string
+		wantB string
 	}{
 		{"simple", "hello", "world", "world", "hello"},
 		{"with empty", "", "test", "test", ""},

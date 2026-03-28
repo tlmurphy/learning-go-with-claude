@@ -309,9 +309,9 @@ func TestSetDifference(t *testing.T) {
 
 func TestNewMatrix(t *testing.T) {
 	tests := []struct {
-		name     string
-		rows     int
-		cols     int
+		name string
+		rows int
+		cols int
 	}{
 		{"3x3", 3, 3},
 		{"2x4", 2, 4},

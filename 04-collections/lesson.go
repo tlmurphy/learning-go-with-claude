@@ -55,8 +55,8 @@ func DemoArrays() {
 
 	// Arrays are VALUE TYPES — assignment copies!
 	original := [3]int{1, 2, 3}
-	copy := original    // full copy
-	copy[0] = 999       // doesn't affect original!
+	copy := original // full copy
+	copy[0] = 999    // doesn't affect original!
 	fmt.Println("Original:", original, "Copy:", copy)
 
 	// [3]int and [4]int are DIFFERENT types — you can't assign between them.
@@ -113,9 +113,9 @@ func DemoSlices() {
 	fmt.Printf("After sub[0]=999: s=%v, sub=%v\n", s, sub)
 
 	// Nil slice vs empty slice — both are valid, both have length 0.
-	var nilSlice []int            // nil
-	emptySlice := []int{}         // not nil, but empty
-	makeSlice := make([]int, 0)   // not nil, but empty
+	var nilSlice []int          // nil
+	emptySlice := []int{}       // not nil, but empty
+	makeSlice := make([]int, 0) // not nil, but empty
 	fmt.Printf("nil slice: %v (nil? %t, len=%d)\n", nilSlice, nilSlice == nil, len(nilSlice))
 	fmt.Printf("empty slice: %v (nil? %t, len=%d)\n", emptySlice, emptySlice == nil, len(emptySlice))
 	fmt.Printf("make slice: %v (nil? %t, len=%d)\n", makeSlice, makeSlice == nil, len(makeSlice))

@@ -158,16 +158,16 @@ func NewTodoAPI() *TodoAPI {
 // Implement a handler for POST /todos that creates a new todo.
 //
 // Requirements:
-// - Decode the JSON body into a CreateTodoRequest
-//   Use json.NewDecoder(r.Body).Decode(&req)
-// - If JSON decoding fails, return 400 with:
-//   {"error": {"code": "invalid_request", "message": "<error message>"}}
-// - If Title is empty, return 400 with:
-//   {"error": {"code": "validation_error", "message": "title is required"}}
-// - On success, create the todo using api.Store.Create(req.Title)
-// - Set the Location header to "/todos/" + todo.ID
-// - Return 201 with the created todo as JSON
-// - Set Content-Type to "application/json" for all responses
+//   - Decode the JSON body into a CreateTodoRequest
+//     Use json.NewDecoder(r.Body).Decode(&req)
+//   - If JSON decoding fails, return 400 with:
+//     {"error": {"code": "invalid_request", "message": "<error message>"}}
+//   - If Title is empty, return 400 with:
+//     {"error": {"code": "validation_error", "message": "title is required"}}
+//   - On success, create the todo using api.Store.Create(req.Title)
+//   - Set the Location header to "/todos/" + todo.ID
+//   - Return 201 with the created todo as JSON
+//   - Set Content-Type to "application/json" for all responses
 //
 // Tip: Use the writeJSON and writeError helpers from lesson.go, or write
 // your own. The test expects the exact error format shown above.
@@ -196,12 +196,12 @@ func (api *TodoAPI) ListHandler(w http.ResponseWriter, r *http.Request) {
 // Implement a handler for GET /todos/{id} that returns a specific todo.
 //
 // Requirements:
-// - Extract the "id" path parameter using r.PathValue("id")
-// - Look up the todo in the store
-// - If not found, return 404 with:
-//   {"error": {"code": "not_found", "message": "todo not found"}}
-// - If found, return 200 with the todo as JSON
-// - Set Content-Type to "application/json" for all responses
+//   - Extract the "id" path parameter using r.PathValue("id")
+//   - Look up the todo in the store
+//   - If not found, return 404 with:
+//     {"error": {"code": "not_found", "message": "todo not found"}}
+//   - If found, return 200 with the todo as JSON
+//   - Set Content-Type to "application/json" for all responses
 func (api *TodoAPI) GetByIDHandler(w http.ResponseWriter, r *http.Request) {
 	// YOUR CODE HERE
 }
@@ -211,15 +211,15 @@ func (api *TodoAPI) GetByIDHandler(w http.ResponseWriter, r *http.Request) {
 // Implement a handler for PUT /todos/{id} that updates an existing todo.
 //
 // Requirements:
-// - Extract the "id" path parameter
-// - Decode the JSON body into an UpdateTodoRequest
-// - If JSON decoding fails, return 400 with:
-//   {"error": {"code": "invalid_request", "message": "<error message>"}}
-// - Call api.Store.Update(id, req)
-// - If the todo is not found, return 404 with:
-//   {"error": {"code": "not_found", "message": "todo not found"}}
-// - On success, return 200 with the updated todo as JSON
-// - Set Content-Type to "application/json" for all responses
+//   - Extract the "id" path parameter
+//   - Decode the JSON body into an UpdateTodoRequest
+//   - If JSON decoding fails, return 400 with:
+//     {"error": {"code": "invalid_request", "message": "<error message>"}}
+//   - Call api.Store.Update(id, req)
+//   - If the todo is not found, return 404 with:
+//     {"error": {"code": "not_found", "message": "todo not found"}}
+//   - On success, return 200 with the updated todo as JSON
+//   - Set Content-Type to "application/json" for all responses
 func (api *TodoAPI) UpdateHandler(w http.ResponseWriter, r *http.Request) {
 	// YOUR CODE HERE
 }
@@ -229,12 +229,12 @@ func (api *TodoAPI) UpdateHandler(w http.ResponseWriter, r *http.Request) {
 // Implement a handler for DELETE /todos/{id}.
 //
 // Requirements:
-// - Extract the "id" path parameter
-// - Call api.Store.Delete(id)
-// - If not found, return 404 with:
-//   {"error": {"code": "not_found", "message": "todo not found"}}
-// - On success, return 204 No Content (no response body)
-// - Set Content-Type to "application/json" for error responses
+//   - Extract the "id" path parameter
+//   - Call api.Store.Delete(id)
+//   - If not found, return 404 with:
+//     {"error": {"code": "not_found", "message": "todo not found"}}
+//   - On success, return 204 No Content (no response body)
+//   - Set Content-Type to "application/json" for error responses
 func (api *TodoAPI) DeleteHandler(w http.ResponseWriter, r *http.Request) {
 	// YOUR CODE HERE
 }
@@ -244,19 +244,19 @@ func (api *TodoAPI) DeleteHandler(w http.ResponseWriter, r *http.Request) {
 // Implement a handler for GET /todos with pagination support.
 //
 // Requirements:
-// - Parse "offset" query parameter (default 0, must be >= 0)
-// - Parse "limit" query parameter (default 10, must be 1-100)
-// - Invalid values should fall back to defaults (not return errors)
-// - Return a JSON object with:
-//   {
+//   - Parse "offset" query parameter (default 0, must be >= 0)
+//   - Parse "limit" query parameter (default 10, must be 1-100)
+//   - Invalid values should fall back to defaults (not return errors)
+//   - Return a JSON object with:
+//     {
 //     "data": [...todos...],
 //     "total": <total count>,
 //     "offset": <offset used>,
 //     "limit": <limit used>
-//   }
-// - The "data" field should contain the paginated slice (never null, use [])
-// - Set Content-Type to "application/json"
-// - Return status 200
+//     }
+//   - The "data" field should contain the paginated slice (never null, use [])
+//   - Set Content-Type to "application/json"
+//   - Return status 200
 //
 // Hint: Use strconv.Atoi to parse query params. If parsing fails, keep default.
 func (api *TodoAPI) PaginatedListHandler(w http.ResponseWriter, r *http.Request) {
@@ -295,13 +295,13 @@ func RespondWithError(w http.ResponseWriter, status int, code, message string) {
 // Build a complete CRUD handler by registering all todo routes on a mux.
 //
 // Requirements:
-// - Register these routes:
-//   GET    /todos       -> api.ListHandler
-//   POST   /todos       -> api.CreateHandler
-//   GET    /todos/{id}  -> api.GetByIDHandler
-//   PUT    /todos/{id}  -> api.UpdateHandler
-//   DELETE /todos/{id}  -> api.DeleteHandler
-// - Return the configured mux
+//   - Register these routes:
+//     GET    /todos       -> api.ListHandler
+//     POST   /todos       -> api.CreateHandler
+//     GET    /todos/{id}  -> api.GetByIDHandler
+//     PUT    /todos/{id}  -> api.UpdateHandler
+//     DELETE /todos/{id}  -> api.DeleteHandler
+//   - Return the configured mux
 //
 // This ties everything together into a working API.
 func (api *TodoAPI) CRUDHandler() *http.ServeMux {

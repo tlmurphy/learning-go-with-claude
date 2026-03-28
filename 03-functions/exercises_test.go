@@ -98,7 +98,7 @@ func TestVariadicAverage(t *testing.T) {
 
 			if tt.wantErr {
 				if err == nil {
-					t.Errorf("VariadicAverage() with no args: expected error, got nil.\n"+
+					t.Errorf("VariadicAverage() with no args: expected error, got nil.\n" +
 						"  Hint: Return an error when no values are provided (division by zero!).",
 					)
 				}
@@ -253,9 +253,9 @@ func TestReduce(t *testing.T) {
 			expected:    24,
 		},
 		{
-			name:        "max",
-			nums:        []int{3, 1, 4, 1, 5, 9},
-			initial:     0,
+			name:    "max",
+			nums:    []int{3, 1, 4, 1, 5, 9},
+			initial: 0,
 			accumulator: func(acc, n int) int {
 				if n > acc {
 					return n
@@ -413,10 +413,10 @@ func TestCompose(t *testing.T) {
 		input    int
 		expected int
 	}{
-		{"addOne after double", addOne, double, 3, 7},     // double(3)=6, addOne(6)=7
-		{"double after addOne", double, addOne, 3, 8},     // addOne(3)=4, double(4)=8
-		{"square after double", square, double, 3, 36},    // double(3)=6, square(6)=36
-		{"negate after addOne", negate, addOne, 5, -6},    // addOne(5)=6, negate(6)=-6
+		{"addOne after double", addOne, double, 3, 7},  // double(3)=6, addOne(6)=7
+		{"double after addOne", double, addOne, 3, 8},  // addOne(3)=4, double(4)=8
+		{"square after double", square, double, 3, 36}, // double(3)=6, square(6)=36
+		{"negate after addOne", negate, addOne, 5, -6}, // addOne(5)=6, negate(6)=-6
 	}
 
 	for _, tt := range tests {

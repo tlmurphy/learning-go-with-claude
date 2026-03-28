@@ -116,12 +116,12 @@ type MessageQueue interface {
 
 // DatabaseClient represents a database connection with configurable options.
 type DatabaseClient struct {
-	Host            string
-	Port            int
-	Database        string
-	MaxConnections  int
-	ConnectTimeout  time.Duration
-	ReadOnly        bool
+	Host           string
+	Port           int
+	Database       string
+	MaxConnections int
+	ConnectTimeout time.Duration
+	ReadOnly       bool
 }
 
 // DBOption is a functional option for configuring DatabaseClient.
@@ -164,8 +164,9 @@ func WithReadOnly() DBOption {
 }
 
 // NewDatabaseClient creates a DatabaseClient with sensible defaults:
-//   Host: "localhost", Port: 5432, Database: "app",
-//   MaxConnections: 10, ConnectTimeout: 5s, ReadOnly: false
+//
+//	Host: "localhost", Port: 5432, Database: "app",
+//	MaxConnections: 10, ConnectTimeout: 5s, ReadOnly: false
 //
 // Options override the defaults.
 func NewDatabaseClient(opts ...DBOption) *DatabaseClient {
@@ -351,9 +352,10 @@ type RouteHandler func(ctx context.Context, params map[string]string) (string, e
 
 // BuildRoutes creates a route map wired to the given ProductService.
 // Routes:
-//   "GET /products"     — calls svc.ListProducts, returns product names joined by comma
-//   "GET /products/:id" — calls svc.GetProduct with params["id"], returns product name
-//   "POST /products"    — calls svc.CreateProduct with product from params, returns "created"
+//
+//	"GET /products"     — calls svc.ListProducts, returns product names joined by comma
+//	"GET /products/:id" — calls svc.GetProduct with params["id"], returns product name
+//	"POST /products"    — calls svc.CreateProduct with product from params, returns "created"
 func BuildRoutes(svc *ProductService) map[string]RouteHandler {
 	// YOUR CODE HERE
 	// Create a map with 3 entries, each calling the appropriate service method

@@ -250,7 +250,7 @@ func TestGetUserHandler(t *testing.T) {
 
 		_, _, err := GetUserHandler(ctx, store, "user-1")
 		if err == nil {
-			t.Fatal("Should return DeadlineExceeded for cancelled context. "+
+			t.Fatal("Should return DeadlineExceeded for cancelled context. " +
 				"Check ctx.Err() before doing work.")
 		}
 		st := FromError(err)

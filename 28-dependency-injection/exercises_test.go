@@ -125,7 +125,7 @@ func TestInterfaceDefinitions(t *testing.T) {
 // Minimal implementations to verify interface signatures
 type testCacheImpl struct{}
 
-func (c *testCacheImpl) Get(_ context.Context, _ string) (string, bool, error) { return "", false, nil }
+func (c *testCacheImpl) Get(_ context.Context, _ string) (string, bool, error)     { return "", false, nil }
 func (c *testCacheImpl) Set(_ context.Context, _, _ string, _ time.Duration) error { return nil }
 
 type testMQImpl struct{}

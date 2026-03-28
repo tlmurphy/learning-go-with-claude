@@ -254,8 +254,8 @@ func (g *ServerGroup) Run(ctx context.Context) error {
 // RequestTracker tracks in-flight requests and supports waiting for
 // them to complete during shutdown.
 type RequestTracker struct {
-	wg      sync.WaitGroup
-	count   atomic.Int64
+	wg       sync.WaitGroup
+	count    atomic.Int64
 	draining atomic.Bool
 }
 
@@ -358,11 +358,11 @@ func (r *ReadinessToggle) State() string {
 //  3. Call Run() — it starts health checks and waits for shutdown signal
 //  4. On signal: mark not ready → drain requests → run shutdown funcs → exit
 type LifecycleManager struct {
-	readiness   *ReadinessToggle
-	tracker     *RequestTracker
-	coordinator *ShutdownCoordinator
+	readiness       *ReadinessToggle
+	tracker         *RequestTracker
+	coordinator     *ShutdownCoordinator
 	shutdownTimeout time.Duration
-	onShutdown  func(string) // callback for logging shutdown events
+	onShutdown      func(string) // callback for logging shutdown events
 }
 
 // NewLifecycleManager creates a new manager with the given shutdown timeout.

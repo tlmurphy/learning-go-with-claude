@@ -119,12 +119,12 @@ func BenchmarkCountVowelsReplace(b *testing.B) {
 // assertDivision is a test helper for the Divide function.
 //
 // Implement this helper so it:
-//   1. Calls t.Helper() (so failure line numbers point to the caller)
-//   2. Calls Divide(dividend, divisor)
-//   3. Asserts no error was returned
-//   4. Asserts quotient matches wantQ
-//   5. Asserts remainder matches wantR
-//   6. Uses descriptive error messages
+//  1. Calls t.Helper() (so failure line numbers point to the caller)
+//  2. Calls Divide(dividend, divisor)
+//  3. Asserts no error was returned
+//  4. Asserts quotient matches wantQ
+//  5. Asserts remainder matches wantR
+//  6. Uses descriptive error messages
 func assertDivision(t *testing.T, dividend, divisor, wantQ, wantR int) {
 	// YOUR CODE HERE
 }
@@ -132,9 +132,9 @@ func assertDivision(t *testing.T, dividend, divisor, wantQ, wantR int) {
 // assertDivisionError is a test helper that asserts Divide returns an error.
 //
 // Implement this helper so it:
-//   1. Calls t.Helper()
-//   2. Calls Divide(dividend, divisor)
-//   3. Asserts an error WAS returned
+//  1. Calls t.Helper()
+//  2. Calls Divide(dividend, divisor)
+//  3. Asserts an error WAS returned
 func assertDivisionError(t *testing.T, dividend, divisor int) {
 	// YOUR CODE HERE
 }
@@ -162,9 +162,9 @@ func TestDivide(t *testing.T) {
 // loaded from the testdata/ directory.
 //
 // Steps:
-//   1. Read the file testdata/csv_samples.txt
-//   2. Each line is a test input for ParseCSVLine
-//   3. Parse each line and verify the result has the expected number of fields
+//  1. Read the file testdata/csv_samples.txt
+//  2. Each line is a test input for ParseCSVLine
+//  3. Parse each line and verify the result has the expected number of fields
 //
 // The testdata/csv_samples.txt file has been provided with sample CSV lines.
 //
@@ -238,17 +238,18 @@ func TestUserServiceWithMock(t *testing.T) {
 // using the golden file pattern.
 //
 // Steps:
-//   1. Generate a report with known input
-//   2. Compare the output against testdata/inventory_report.golden
-//   3. If the -update flag is set, write the actual output as the new golden file
+//  1. Generate a report with known input
+//  2. Compare the output against testdata/inventory_report.golden
+//  3. If the -update flag is set, write the actual output as the new golden file
 //
 // For simplicity, you can skip the -update flag and just compare against
 // the golden file. The golden file has been pre-created for you.
 //
 // Hint:
-//   expected, err := os.ReadFile(filepath.Join("testdata", "inventory_report.golden"))
-//   actual := GenerateInventoryReport(...)
-//   if actual != string(expected) { t.Errorf(...) }
+//
+//	expected, err := os.ReadFile(filepath.Join("testdata", "inventory_report.golden"))
+//	actual := GenerateInventoryReport(...)
+//	if actual != string(expected) { t.Errorf(...) }
 func TestGenerateInventoryReportGolden(t *testing.T) {
 	// YOUR CODE HERE
 }

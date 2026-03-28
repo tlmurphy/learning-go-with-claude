@@ -46,9 +46,9 @@ func TestDivide(t *testing.T) {
 
 func TestSafeDivide(t *testing.T) {
 	tests := []struct {
-		name       string
-		a, b, def  float64
-		want       float64
+		name      string
+		a, b, def float64
+		want      float64
 	}{
 		{"normal", 10, 2, -1, 5},
 		{"divide by zero returns default", 10, 0, -1, -1},

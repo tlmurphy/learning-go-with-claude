@@ -204,9 +204,9 @@ func DemoPingPong(rounds int) []string {
 	// Pong player (also collects the log)
 	go func() {
 		for i := 0; i < rounds; i++ {
-			msg := <-ping      // Wait for ping
+			msg := <-ping // Wait for ping
 			log = append(log, msg)
-			pong <- "pong"     // Send pong back
+			pong <- "pong" // Send pong back
 			log = append(log, "pong")
 		}
 		done <- log
@@ -448,7 +448,7 @@ func DemoSemaphore(tasks int, maxConcurrent int) int {
 
 	for i := 0; i < tasks; i++ {
 		go func(id int) {
-			sem <- struct{}{} // Acquire semaphore (blocks if at capacity)
+			sem <- struct{}{}        // Acquire semaphore (blocks if at capacity)
 			defer func() { <-sem }() // Release semaphore
 
 			// Simulate work

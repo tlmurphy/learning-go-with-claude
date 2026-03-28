@@ -330,8 +330,8 @@ type APIKeyStore struct {
 
 // APIKeyInfo contains metadata about an API key.
 type APIKeyInfo struct {
-	Name      string    // Human-readable name ("Production API Key")
-	Owner     string    // User or service that owns this key
+	Name      string // Human-readable name ("Production API Key")
+	Owner     string // User or service that owns this key
 	CreatedAt time.Time
 	Roles     []string // What this key is authorized to do
 }

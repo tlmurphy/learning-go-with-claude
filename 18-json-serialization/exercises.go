@@ -35,14 +35,14 @@ import (
 //   - Pages    int       → json key "pages", omit if zero
 //   - ISBN     string    → json key "isbn", omit if empty
 //   - internal string    → should NEVER appear in JSON (unexported is fine,
-//                          but also add json:"-" tag for documentation)
+//     but also add json:"-" tag for documentation)
 type Book struct {
 	ID       int    `json:"id"`
 	Title    string `json:"title"`
 	Author   string `json:"author"`
-	Pages    int    `json:"pages,omitempty"`  // YOUR CODE HERE — add the right tag
-	ISBN     string `json:"isbn,omitempty"`   // YOUR CODE HERE — add the right tag
-	internal string `json:"-"`                // YOUR CODE HERE — add the right tag
+	Pages    int    `json:"pages,omitempty"` // YOUR CODE HERE — add the right tag
+	ISBN     string `json:"isbn,omitempty"`  // YOUR CODE HERE — add the right tag
+	internal string `json:"-"`               // YOUR CODE HERE — add the right tag
 }
 
 // MarshalBook takes a Book and returns its JSON representation as a string.
@@ -107,10 +107,11 @@ func ApplyUpdate(existing map[string]interface{}, update UserUpdate) map[string]
 // When unmarshaled, it should parse that string format back to cents.
 //
 // Examples:
-//   Price{Cents: 1299}  → JSON: "12.99"
-//   Price{Cents: 500}   → JSON: "5.00"
-//   Price{Cents: 7}     → JSON: "0.07"
-//   JSON "25.50"        → Price{Cents: 2550}
+//
+//	Price{Cents: 1299}  → JSON: "12.99"
+//	Price{Cents: 500}   → JSON: "5.00"
+//	Price{Cents: 7}     → JSON: "0.07"
+//	JSON "25.50"        → Price{Cents: 2550}
 type Price struct {
 	Cents int64
 }
@@ -166,9 +167,10 @@ func (r Rating) MarshalJSON() ([]byte, error) {
 // The Type field determines how to parse the Payload.
 //
 // Types and their payload structures:
-//   "email"   → EmailPayload{To: string, Subject: string}
-//   "sms"     → SMSPayload{Phone: string, Message: string}
-//   "push"    → PushPayload{DeviceID: string, Title: string, Body: string}
+//
+//	"email"   → EmailPayload{To: string, Subject: string}
+//	"sms"     → SMSPayload{Phone: string, Message: string}
+//	"push"    → PushPayload{DeviceID: string, Title: string, Body: string}
 type Notification struct {
 	Type    string          `json:"type"`
 	Payload json.RawMessage `json:"payload"`
@@ -194,9 +196,10 @@ type PushPayload struct {
 // returns the type and the parsed payload as an interface{}.
 //
 // Based on the "type" field, parse the payload into the correct struct:
-//   "email" → *EmailPayload
-//   "sms"   → *SMSPayload
-//   "push"  → *PushPayload
+//
+//	"email" → *EmailPayload
+//	"sms"   → *SMSPayload
+//	"push"  → *PushPayload
 //
 // Return an error for unknown types or invalid JSON.
 func ParseNotification(jsonStr string) (string, interface{}, error) {

@@ -78,9 +78,9 @@ func DemoCreatingErrors() {
 
 	// Wrapped error — preserves the original for unwrapping
 	err3 := fmt.Errorf("service unavailable: %w", err1)
-	fmt.Println(err3)                      // "service unavailable: connection refused"
-	fmt.Println(errors.Is(err3, err1))     // true — the original error is preserved
-	fmt.Println(errors.Is(err2, err1))     // false — %v doesn't preserve it
+	fmt.Println(err3)                  // "service unavailable: connection refused"
+	fmt.Println(errors.Is(err3, err1)) // true — the original error is preserved
+	fmt.Println(errors.Is(err2, err1)) // false — %v doesn't preserve it
 }
 
 // -------------------------------------------------------------------------

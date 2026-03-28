@@ -115,7 +115,7 @@ library functions expect. Use sized integers when you need a specific size
 func DemoBasicTypes() {
 	// Integers — int is the default, platform-dependent (usually 64-bit).
 	var i int = 42
-	var i8 int8 = 127   // -128 to 127
+	var i8 int8 = 127    // -128 to 127
 	var i64 int64 = 9999 // when you need a specific size
 
 	fmt.Println("Integer types:")
@@ -137,8 +137,8 @@ func DemoBasicTypes() {
 
 	// byte is an alias for uint8, rune is an alias for int32.
 	// This distinction matters when processing text.
-	var b byte = 'A'  // single character in single quotes
-	var r rune = '世'  // Unicode code point — needs int32 to represent
+	var b byte = 'A' // single character in single quotes
+	var r rune = '世' // Unicode code point — needs int32 to represent
 	fmt.Printf("  byte='%c' (%d), rune='%c' (%d)\n", b, b, r, r)
 
 	// Booleans — no truthy/falsy in Go. Conditions must be explicitly bool.
@@ -181,8 +181,8 @@ func DemoZeroValues() {
 	var f float64
 	var s string
 	var b bool
-	var p *int        // pointer
-	var sl []int      // slice
+	var p *int           // pointer
+	var sl []int         // slice
 	var m map[string]int // map
 
 	fmt.Println("Zero values:")
@@ -249,9 +249,9 @@ type ByteSize float64
 const (
 	_           = iota             // blank identifier discards 0
 	KB ByteSize = 1 << (10 * iota) // 1 << 10 = 1024
-	MB                              // 1 << 20
-	GB                              // 1 << 30
-	TB                              // 1 << 40
+	MB                             // 1 << 20
+	GB                             // 1 << 30
+	TB                             // 1 << 40
 )
 
 // DemoConstants shows how constants and iota work in Go.
@@ -306,7 +306,7 @@ String conversions have special behavior:
 
 The strconv package is your friend for string <-> number conversions:
   strconv.Itoa(42)       -> "42"
-  strconv.Atoi("42")     -> 42, nil  (note: returns an error!)
+  strconv.Atoi("42")     -> 42, nil  (returns int, error — you must handle the error)
 
 =============================================================================
 */
@@ -338,8 +338,8 @@ func DemoTypeConversions() {
 
 	// String <-> []byte for when you need mutable string data.
 	s := "Hello"
-	bytes := []byte(s) // string -> byte slice (copy!)
-	bytes[0] = 'h'     // modify the copy
+	bytes := []byte(s)  // string -> byte slice (copy!)
+	bytes[0] = 'h'      // modify the copy
 	s2 := string(bytes) // byte slice -> string (another copy!)
 	fmt.Printf("  original=%q, modified=%q\n", s, s2)
 

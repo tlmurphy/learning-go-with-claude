@@ -764,9 +764,9 @@ func DemoHealthCheck() {
 	hs := NewHealthServer()
 
 	// Register services
-	hs.SetServingStatus("", StatusServing)              // Overall: healthy
-	hs.SetServingStatus("user-service", StatusServing)   // User service: healthy
-	hs.SetServingStatus("cache", StatusNotServing)       // Cache: unhealthy
+	hs.SetServingStatus("", StatusServing)             // Overall: healthy
+	hs.SetServingStatus("user-service", StatusServing) // User service: healthy
+	hs.SetServingStatus("cache", StatusNotServing)     // Cache: unhealthy
 
 	// Check health
 	ctx := context.Background()

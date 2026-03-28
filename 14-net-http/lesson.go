@@ -315,8 +315,8 @@ func DemoProductionServer(mux http.Handler) *http.Server {
 		Handler: mux,
 
 		// Timeouts prevent resource exhaustion from slow or malicious clients.
-		ReadTimeout:  5 * time.Second,  // max time to read request
-		WriteTimeout: 10 * time.Second, // max time to write response
+		ReadTimeout:  5 * time.Second,   // max time to read request
+		WriteTimeout: 10 * time.Second,  // max time to write response
 		IdleTimeout:  120 * time.Second, // max time between requests on keep-alive
 
 		// MaxHeaderBytes limits the size of request headers.
@@ -560,8 +560,8 @@ func DemoFormHandling(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Now you can access form values
-	name := r.FormValue("name")         // shortcut that calls ParseForm if needed
-	email := r.PostFormValue("email")    // only from POST body, not query params
+	name := r.FormValue("name")       // shortcut that calls ParseForm if needed
+	email := r.PostFormValue("email") // only from POST body, not query params
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]string{

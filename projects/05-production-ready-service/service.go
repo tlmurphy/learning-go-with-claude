@@ -67,7 +67,7 @@ func processPayment(order *Order) error {
 func CalculateTotal(items []OrderItem) float64 {
 	total := 0.0
 	for i := 0; i < len(items); i++ {
-		total = total + items[i].Price * float64(items[i].Quantity)
+		total = total + items[i].Price*float64(items[i].Quantity)
 	}
 	return total
 }

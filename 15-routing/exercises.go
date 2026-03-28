@@ -80,11 +80,11 @@ func ResourceRouter() *http.ServeMux {
 // Create a ServeMux that uses the {path...} wildcard for catch-all routing.
 //
 // Requirements:
-// - GET /static/{path...} -> 200, JSON body: {"file": "<path>"}
-//   where <path> is the wildcard value from r.PathValue("path")
-// - GET /static/ (no path) -> 200, JSON body: {"file": "index.html"}
-//   (default to "index.html" when path is empty)
-// - All responses should have Content-Type: application/json
+//   - GET /static/{path...} -> 200, JSON body: {"file": "<path>"}
+//     where <path> is the wildcard value from r.PathValue("path")
+//   - GET /static/ (no path) -> 200, JSON body: {"file": "index.html"}
+//     (default to "index.html" when path is empty)
+//   - All responses should have Content-Type: application/json
 //
 // Wildcards are useful for file servers, SPA routing, and proxy handlers.
 func WildcardRouter() *http.ServeMux {
@@ -98,12 +98,12 @@ func WildcardRouter() *http.ServeMux {
 // Create a ServeMux with versioned API routes using subrouting.
 //
 // Requirements:
-// - GET /api/v1/status -> 200, JSON body: {"version": "v1", "status": "ok"}
-// - GET /api/v2/status -> 200, JSON body: {"version": "v2", "status": "ok"}
-// - GET /api/v1/users  -> 200, JSON body: {"version": "v1", "users": []}
-// - GET /api/v2/users  -> 200, JSON body: {"version": "v2", "users": [], "meta": {}}
-//   where "meta" is an empty map (map[string]interface{}{})
-// - All responses should have Content-Type: application/json
+//   - GET /api/v1/status -> 200, JSON body: {"version": "v1", "status": "ok"}
+//   - GET /api/v2/status -> 200, JSON body: {"version": "v2", "status": "ok"}
+//   - GET /api/v1/users  -> 200, JSON body: {"version": "v1", "users": []}
+//   - GET /api/v2/users  -> 200, JSON body: {"version": "v2", "users": [], "meta": {}}
+//     where "meta" is an empty map (map[string]interface{}{})
+//   - All responses should have Content-Type: application/json
 //
 // Use http.StripPrefix and separate muxes for each version. This pattern
 // lets different API versions evolve independently.
@@ -118,13 +118,13 @@ func VersionedAPI() *http.ServeMux {
 // Create a ServeMux that uses StripPrefix to mount a sub-router.
 //
 // Requirements:
-// - Create an "admin" sub-router with these routes:
-//   GET /dashboard -> 200, JSON body: {"page": "dashboard"}
-//   GET /settings  -> 200, JSON body: {"page": "settings"}
-// - Mount it at /admin/ on the main mux using StripPrefix
-// - So GET /admin/dashboard -> 200, JSON body: {"page": "dashboard"}
-// - And GET /admin/settings -> 200, JSON body: {"page": "settings"}
-// - All responses should have Content-Type: application/json
+//   - Create an "admin" sub-router with these routes:
+//     GET /dashboard -> 200, JSON body: {"page": "dashboard"}
+//     GET /settings  -> 200, JSON body: {"page": "settings"}
+//   - Mount it at /admin/ on the main mux using StripPrefix
+//   - So GET /admin/dashboard -> 200, JSON body: {"page": "dashboard"}
+//   - And GET /admin/settings -> 200, JSON body: {"page": "settings"}
+//   - All responses should have Content-Type: application/json
 //
 // StripPrefix removes the prefix so the sub-router sees clean paths.
 func StripPrefixRouter() *http.ServeMux {
@@ -138,12 +138,12 @@ func StripPrefixRouter() *http.ServeMux {
 // Create a ServeMux with custom 404 and 405 error responses.
 //
 // Requirements:
-// - Register: GET /api/health -> 200, JSON body: {"status": "ok"}
-// - Register: POST /api/data -> 200, JSON body: {"received": true}
-// - For unmatched routes (404), return JSON:
-//   {"error": "not found", "path": "<request path>"}
-//   with status 404 and Content-Type: application/json
-// - The catch-all should match "/" to handle all unmatched paths
+//   - Register: GET /api/health -> 200, JSON body: {"status": "ok"}
+//   - Register: POST /api/data -> 200, JSON body: {"received": true}
+//   - For unmatched routes (404), return JSON:
+//     {"error": "not found", "path": "<request path>"}
+//     with status 404 and Content-Type: application/json
+//   - The catch-all should match "/" to handle all unmatched paths
 //
 // Note: 405 (Method Not Allowed) is handled automatically by the mux
 // when a path matches but the method doesn't. We focus on 404 here.

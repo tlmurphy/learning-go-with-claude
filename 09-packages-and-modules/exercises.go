@@ -162,12 +162,12 @@ func (l *memoryLogger) Messages() []string {
 
 // DatabaseConfig holds database connection configuration.
 type DatabaseConfig struct {
-	Host            string
-	Port            int
-	Database        string
-	MaxConnections  int
-	TimeoutSeconds  int
-	SSLEnabled      bool
+	Host           string
+	Port           int
+	Database       string
+	MaxConnections int
+	TimeoutSeconds int
+	SSLEnabled     bool
 }
 
 // DBOption is a functional option for configuring DatabaseConfig.

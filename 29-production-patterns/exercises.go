@@ -125,8 +125,9 @@ type CircuitBreaker struct {
 }
 
 // NewCircuitBreaker creates a circuit breaker.
-//   failureThreshold: number of consecutive failures before opening
-//   resetTimeout: how long to wait in Open state before trying Half-Open
+//
+//	failureThreshold: number of consecutive failures before opening
+//	resetTimeout: how long to wait in Open state before trying Half-Open
 func NewCircuitBreaker(failureThreshold int, resetTimeout time.Duration) *CircuitBreaker {
 	// YOUR CODE HERE
 	return &CircuitBreaker{
@@ -389,14 +390,14 @@ type HandlerDeps struct {
 // ProductionHandler demonstrates a handler with all production patterns.
 //
 // It should:
-//   1. Increment a "requests_total" counter
-//   2. Use the circuit breaker to call the serviceFn
-//   3. If circuit breaker returns ErrCircuitOpen, increment "circuit_open_total"
-//      counter and return the fallback result
-//   4. If serviceFn succeeds, return the result
-//   5. If serviceFn fails (but not circuit open), increment "errors_total"
-//      counter and return the fallback result
-//   6. Log each outcome (success, circuit open, error) using deps.Logger
+//  1. Increment a "requests_total" counter
+//  2. Use the circuit breaker to call the serviceFn
+//  3. If circuit breaker returns ErrCircuitOpen, increment "circuit_open_total"
+//     counter and return the fallback result
+//  4. If serviceFn succeeds, return the result
+//  5. If serviceFn fails (but not circuit open), increment "errors_total"
+//     counter and return the fallback result
+//  6. Log each outcome (success, circuit open, error) using deps.Logger
 //
 // The fallbackFn provides the degraded result.
 func ProductionHandler(

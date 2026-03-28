@@ -531,7 +531,7 @@ func TestEmailValidator(t *testing.T) {
 		}
 
 		invalidEmails := []string{
-			"",                // empty
+			"",               // empty
 			"noatsign",       // no @
 			"@domain.com",    // no local part
 			"user@",          // no domain

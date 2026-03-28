@@ -407,18 +407,18 @@ func DemoMemStats() {
 func DemoStructPadding() {
 	// Poorly ordered: wastes space on padding
 	type Padded struct {
-		a bool    // 1 byte + 7 padding
-		b int64   // 8 bytes
-		c bool    // 1 byte + 7 padding
-		d int64   // 8 bytes
+		a bool  // 1 byte + 7 padding
+		b int64 // 8 bytes
+		c bool  // 1 byte + 7 padding
+		d int64 // 8 bytes
 	}
 
 	// Well ordered: minimizes padding
 	type Compact struct {
-		b int64   // 8 bytes
-		d int64   // 8 bytes
-		a bool    // 1 byte
-		c bool    // 1 byte + 6 padding
+		b int64 // 8 bytes
+		d int64 // 8 bytes
+		a bool  // 1 byte
+		c bool  // 1 byte + 6 padding
 	}
 
 	type Padded2 = Padded

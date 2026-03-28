@@ -43,15 +43,17 @@ func FizzBuzz(n int) []string {
 // Use an if statement with an init statement to classify an age string.
 //
 // Given an age as an int, return a category string:
-//   age < 0:    "invalid"
-//   age < 13:   "child"
-//   age < 18:   "teenager"
-//   age < 65:   "adult"
-//   age >= 65:  "senior"
+//
+//	age < 0:    "invalid"
+//	age < 13:   "child"
+//	age < 18:   "teenager"
+//	age < 65:   "adult"
+//	age >= 65:  "senior"
 //
 // Bonus insight: In a web handler, you'd often parse the age from a query
 // parameter first, then classify:
-//   if age, err := strconv.Atoi(ageParam); err != nil { ... }
+//
+//	if age, err := strconv.Atoi(ageParam); err != nil { ... }
 func ClassifyAge(age int) string {
 	// YOUR CODE HERE
 	return ""
@@ -62,9 +64,10 @@ func ClassifyAge(age int) string {
 // Use a switch statement to categorize days of the week.
 //
 // Given a day name (case-insensitive), return:
-//   "Monday" through "Friday" -> "weekday"
-//   "Saturday", "Sunday"      -> "weekend"
-//   anything else              -> "invalid"
+//
+//	"Monday" through "Friday" -> "weekday"
+//	"Saturday", "Sunday"      -> "weekend"
+//	anything else              -> "invalid"
 //
 // Hint: Normalize the input first. Use strings.ToLower or strings.Title.
 // Switch cases can have multiple values: case "a", "b", "c":
@@ -116,11 +119,12 @@ func FindInMatrix(matrix [][]int, target int) (row, col int, found bool) {
 //
 // The machine has three states: "idle", "running", "stopped"
 // Commands and transitions:
-//   "idle"    + "start" -> "running"
-//   "running" + "stop"  -> "stopped"
-//   "running" + "pause" -> "idle"
-//   "stopped" + "reset" -> "idle"
-//   Any other combination -> state stays the same
+//
+//	"idle"    + "start" -> "running"
+//	"running" + "stop"  -> "stopped"
+//	"running" + "pause" -> "idle"
+//	"stopped" + "reset" -> "idle"
+//	Any other combination -> state stays the same
 //
 // Process each command in order and return the final state.
 // Start in the "idle" state.
@@ -158,13 +162,13 @@ func CollatzSteps(n int) int {
 // Given a slice of string records in "key:value" format, process them
 // according to these rules:
 //
-//   1. Skip empty strings (continue)
-//   2. If a record doesn't contain ":", add it to the errors slice
-//   3. If the key (part before ":") is "STOP", stop processing immediately
-//      (break — do NOT include "STOP" in results or errors)
-//   4. If the key is empty (record starts with ":"), add to errors
-//   5. If the value (part after ":") is empty, use "default" as the value
-//   6. Otherwise, add the key-value pair to the results map
+//  1. Skip empty strings (continue)
+//  2. If a record doesn't contain ":", add it to the errors slice
+//  3. If the key (part before ":") is "STOP", stop processing immediately
+//     (break — do NOT include "STOP" in results or errors)
+//  4. If the key is empty (record starts with ":"), add to errors
+//  5. If the value (part after ":") is empty, use "default" as the value
+//  6. Otherwise, add the key-value pair to the results map
 //
 // Return the results map and errors slice.
 //

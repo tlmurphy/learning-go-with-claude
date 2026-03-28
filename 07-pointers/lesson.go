@@ -320,7 +320,7 @@ func DemoNewWithValue() {
 	fmt.Printf("port=%d, timeout=%d\n", *cfg.Port, *cfg.Timeout)
 
 	// The old zero-value form still works
-	z := new(int) // *int pointing to 0
+	z := new(int)   // *int pointing to 0
 	fmt.Println(*z) // 0
 }
 
@@ -348,7 +348,7 @@ func DemoNewWithValue() {
 
 func createOnHeap() *Coordinate {
 	c := Coordinate{X: 1, Y: 2} // This "escapes" because we return a pointer
-	return &c                    // Allocated on heap — safe in Go, dangerous in C
+	return &c                   // Allocated on heap — safe in Go, dangerous in C
 }
 
 func DemoEscapeAnalysis() {

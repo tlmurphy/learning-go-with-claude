@@ -57,9 +57,12 @@ func InsertAt(s []int, index int, val int) []int {
 // This helps you understand when append allocates a new backing array.
 //
 // Example: PredictCapacity(3, 5, 2) creates make([]int, 3, 5), appends 2 elements.
-//          Final: len=5, cap=5 (fits in existing capacity)
+//
+//	Final: len=5, cap=5 (fits in existing capacity)
+//
 // Example: PredictCapacity(3, 5, 4) creates make([]int, 3, 5), appends 4 elements.
-//          Final: len=7, cap=10 (exceeded capacity, had to grow)
+//
+//	Final: len=7, cap=10 (exceeded capacity, had to grow)
 func PredictCapacity(initialLen, initialCap, appendCount int) (finalLen, finalCap int) {
 	// YOUR CODE HERE
 	return 0, 0
@@ -157,7 +160,8 @@ func Deduplicate(s []int) []int {
 // The grouping should be case-sensitive.
 //
 // Example: GroupBy([]string{"apple", "avocado", "banana", "blueberry", "cherry"})
-//   returns: map['a':["apple","avocado"], 'b':["banana","blueberry"], 'c':["cherry"]]
+//
+//	returns: map['a':["apple","avocado"], 'b':["banana","blueberry"], 'c':["cherry"]]
 func GroupBy(items []string) map[rune][]string {
 	// YOUR CODE HERE
 	return nil

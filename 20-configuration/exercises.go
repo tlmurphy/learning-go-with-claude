@@ -67,12 +67,12 @@ func LoadAppConfig() AppConfig {
 
 // ServiceConfig holds configuration for an HTTP service.
 type ServiceConfig struct {
-	Name         string
-	Port         int
-	ReadTimeout  time.Duration
-	WriteTimeout time.Duration
-	MaxBodySize  int64
-	EnableCORS   bool
+	Name           string
+	Port           int
+	ReadTimeout    time.Duration
+	WriteTimeout   time.Duration
+	MaxBodySize    int64
+	EnableCORS     bool
 	AllowedOrigins []string
 }
 

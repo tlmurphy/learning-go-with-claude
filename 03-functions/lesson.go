@@ -279,9 +279,9 @@ func DemoClosures() {
 	fmt.Println("Counter 2:", counter2(), counter2())             // 1, 2 (independent!)
 
 	acc := MakeAccumulator()
-	fmt.Println("Accumulator: add 10 ->", acc(10))  // 10
-	fmt.Println("Accumulator: add 20 ->", acc(20))  // 30
-	fmt.Println("Accumulator: add 5  ->", acc(5))   // 35
+	fmt.Println("Accumulator: add 10 ->", acc(10)) // 10
+	fmt.Println("Accumulator: add 20 ->", acc(20)) // 30
+	fmt.Println("Accumulator: add 5  ->", acc(5))  // 35
 }
 
 /*

@@ -120,33 +120,33 @@ func TestDayType(t *testing.T) {
 
 func TestCountUnicodeCategories(t *testing.T) {
 	tests := []struct {
-		name                                      string
-		input                                     string
+		name                                                    string
+		input                                                   string
 		wantUpper, wantLower, wantDigits, wantSpaces, wantOther int
 	}{
 		{
-			name:  "mixed ASCII",
-			input: "Hello World 123!",
+			name:      "mixed ASCII",
+			input:     "Hello World 123!",
 			wantUpper: 2, wantLower: 8, wantDigits: 3, wantSpaces: 2, wantOther: 1,
 		},
 		{
-			name:  "all lowercase",
-			input: "abc",
+			name:      "all lowercase",
+			input:     "abc",
 			wantUpper: 0, wantLower: 3, wantDigits: 0, wantSpaces: 0, wantOther: 0,
 		},
 		{
-			name:  "password check",
-			input: "P@ssw0rd!",
+			name:      "password check",
+			input:     "P@ssw0rd!",
 			wantUpper: 1, wantLower: 4, wantDigits: 1, wantSpaces: 0, wantOther: 3,
 		},
 		{
-			name:  "empty string",
-			input: "",
+			name:      "empty string",
+			input:     "",
 			wantUpper: 0, wantLower: 0, wantDigits: 0, wantSpaces: 0, wantOther: 0,
 		},
 		{
-			name:  "whitespace types",
-			input: "a\tb\nc",
+			name:      "whitespace types",
+			input:     "a\tb\nc",
 			wantUpper: 0, wantLower: 3, wantDigits: 0, wantSpaces: 2, wantOther: 0,
 		},
 	}
@@ -181,11 +181,11 @@ func TestFindInMatrix(t *testing.T) {
 	}
 
 	tests := []struct {
-		name     string
-		matrix   [][]int
-		target   int
-		wantRow  int
-		wantCol  int
+		name      string
+		matrix    [][]int
+		target    int
+		wantRow   int
+		wantCol   int
 		wantFound bool
 	}{
 		{"find 1 (top-left)", matrix, 1, 0, 0, true},

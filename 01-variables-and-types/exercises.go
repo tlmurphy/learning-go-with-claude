@@ -8,7 +8,7 @@ package variables
  Work through these exercises in order. Each one builds on concepts from
  the lesson and from previous exercises. Run the tests with:
 
-   go test -v ./01-variables-and-types/
+   make test 01
 
  Tip: Run a single test at a time while working:
 
@@ -93,12 +93,13 @@ func GetStatusCategories() (int, int, int, int, int) {
 // value and true.
 //
 // This teaches two things:
-//   1. Explicit type conversion (Go won't do it for you)
-//   2. The comma-ok pattern (returning a success bool alongside a value)
+//  1. Explicit type conversion (Go won't do it for you)
+//  2. The comma-ok pattern (returning a success bool alongside a value)
 //
 // You'll see the comma-ok pattern everywhere in Go:
-//   value, ok := myMap[key]
-//   value, err := strconv.Atoi(s)
+//
+//	value, ok := myMap[key]
+//	value, err := strconv.Atoi(s)
 func SafeIntToInt8(n int) (int8, bool) {
 	// YOUR CODE HERE
 	return 0, false
@@ -160,7 +161,8 @@ func AbsoluteZeroCelsius() Celsius {
 // Exercise 7: SwapValues
 //
 // Go supports multiple assignment, which makes swapping elegant:
-//   a, b = b, a
+//
+//	a, b = b, a
 //
 // Implement a function that takes two ints and returns them swapped.
 // Then implement SwapStrings that does the same for strings.

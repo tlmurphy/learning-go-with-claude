@@ -197,8 +197,8 @@ func TestCustomHeaderHandler(t *testing.T) {
 		}
 
 		expectedHeaders := map[string]string{
-			"X-Request-Id": "12345",
-			"X-Powered-By": "Go",
+			"X-Request-Id":  "12345",
+			"X-Powered-By":  "Go",
 			"Cache-Control": "no-store",
 			"Content-Type":  "application/json",
 		}
@@ -272,11 +272,11 @@ func TestHealthCheckHandler(t *testing.T) {
 // TestContentNegotiationHandler tests Exercise 6: Accept header handling.
 func TestContentNegotiationHandler(t *testing.T) {
 	tests := []struct {
-		name       string
-		accept     string
-		wantType   string
-		wantBody   string
-		isJSON     bool
+		name     string
+		accept   string
+		wantType string
+		wantBody string
+		isJSON   bool
 	}{
 		{
 			name:     "returns JSON for application/json",

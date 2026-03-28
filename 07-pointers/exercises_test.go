@@ -11,7 +11,7 @@ import (
 
 func TestSwap(t *testing.T) {
 	tests := []struct {
-		a, b     int
+		a, b         int
 		wantA, wantB int
 	}{
 		{1, 2, 2, 1},

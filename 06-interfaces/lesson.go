@@ -323,8 +323,8 @@ func DemoNilInterface() {
 	// NON-nil interface holding a nil pointer — the gotcha
 	var d *Dog = nil
 	s = d
-	fmt.Println(s == nil)   // FALSE! type is *Dog, value is nil
-	fmt.Println(d == nil)   // true — the pointer itself is nil
+	fmt.Println(s == nil) // FALSE! type is *Dog, value is nil
+	fmt.Println(d == nil) // true — the pointer itself is nil
 
 	// This is why you should check the concrete type if you're unsure
 }

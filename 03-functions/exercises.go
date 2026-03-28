@@ -26,7 +26,8 @@ import "fmt"
 //   - error (if dividing by zero)
 //
 // For zero divisor, return 0, 0, and an error with the message:
-//   "division by zero"
+//
+//	"division by zero"
 //
 // This is the fundamental Go pattern: (result, error). You'll write
 // hundreds of functions like this in Go web services.
@@ -73,7 +74,8 @@ func VariadicAverage(nums ...float64) (float64, error) {
 // returns true. The original slice must not be modified.
 //
 // Example: Filter([]int{1,2,3,4,5}, func(n int) bool { return n > 3 })
-//          returns []int{4, 5}
+//
+//	returns []int{4, 5}
 func Filter(nums []int, predicate func(int) bool) []int {
 	// YOUR CODE HERE
 	return nil
@@ -83,7 +85,8 @@ func Filter(nums []int, predicate func(int) bool) []int {
 // The original slice must not be modified.
 //
 // Example: Map([]int{1,2,3}, func(n int) int { return n * 2 })
-//          returns []int{2, 4, 6}
+//
+//	returns []int{2, 4, 6}
 func Map(nums []int, transform func(int) int) []int {
 	// YOUR CODE HERE
 	return nil
@@ -93,7 +96,8 @@ func Map(nums []int, transform func(int) int) []int {
 // function. The initial value is the starting value for accumulation.
 //
 // Example: Reduce([]int{1,2,3,4}, 0, func(acc, n int) int { return acc + n })
-//          returns 10
+//
+//	returns 10
 func Reduce(nums []int, initial int, accumulator func(int, int) int) int {
 	// YOUR CODE HERE
 	return 0
@@ -111,11 +115,12 @@ func Reduce(nums []int, initial int, accumulator func(int, int) int) int {
 // This demonstrates how closures capture variables by reference.
 //
 // Example:
-//   inc, dec, val := NewCounter(10)
-//   inc()  // returns 11
-//   inc()  // returns 12
-//   dec()  // returns 11
-//   val()  // returns 11
+//
+//	inc, dec, val := NewCounter(10)
+//	inc()  // returns 11
+//	inc()  // returns 12
+//	dec()  // returns 11
+//	val()  // returns 11
 func NewCounter(start int) (increment, decrement, value func() int) {
 	// YOUR CODE HERE
 	return nil, nil, nil
@@ -127,21 +132,23 @@ func NewCounter(start int) (increment, decrement, value func() int) {
 //
 // Implement a Logger "middleware" that wraps a function. Given a function
 // that takes a string and returns a string, return a new function that:
-//   1. Records that it was called (append to the log slice)
-//   2. Calls the original function
-//   3. Records the result (append to the log slice)
-//   4. Returns the original result
+//  1. Records that it was called (append to the log slice)
+//  2. Calls the original function
+//  3. Records the result (append to the log slice)
+//  4. Returns the original result
 //
 // The log entries should be:
-//   "calling with: <input>"
-//   "returned: <result>"
+//
+//	"calling with: <input>"
+//	"returned: <result>"
 //
 // The log slice is provided as a pointer so the wrapper can append to it.
 //
 // In real Go web servers, this exact pattern is used for logging, auth,
 // rate limiting, etc:
-//   handler = loggingMiddleware(handler)
-//   handler = authMiddleware(handler)
+//
+//	handler = loggingMiddleware(handler)
+//	handler = authMiddleware(handler)
 func Logger(fn func(string) string, log *[]string) func(string) string {
 	// YOUR CODE HERE
 	return nil
@@ -181,10 +188,11 @@ func DeferOrder(n int) string {
 // g is applied first, then f is applied to g's result.
 //
 // Example:
-//   double := func(x int) int { return x * 2 }
-//   addOne := func(x int) int { return x + 1 }
-//   doubleThenAdd := Compose(addOne, double)
-//   doubleThenAdd(3) // = addOne(double(3)) = addOne(6) = 7
+//
+//	double := func(x int) int { return x * 2 }
+//	addOne := func(x int) int { return x + 1 }
+//	doubleThenAdd := Compose(addOne, double)
+//	doubleThenAdd(3) // = addOne(double(3)) = addOne(6) = 7
 func Compose(f, g func(int) int) func(int) int {
 	// YOUR CODE HERE
 	return nil
@@ -204,11 +212,12 @@ func Compose(f, g func(int) int) func(int) int {
 // database queries or API calls.
 //
 // Example:
-//   square := func(n int) int { return n * n }
-//   memoSquare, callCount := Memoize(square)
-//   memoSquare(4)  // computes 16, callCount() returns 1
-//   memoSquare(4)  // returns cached 16, callCount() still returns 1
-//   memoSquare(5)  // computes 25, callCount() returns 2
+//
+//	square := func(n int) int { return n * n }
+//	memoSquare, callCount := Memoize(square)
+//	memoSquare(4)  // computes 16, callCount() returns 1
+//	memoSquare(4)  // returns cached 16, callCount() still returns 1
+//	memoSquare(5)  // computes 25, callCount() returns 2
 func Memoize(fn func(int) int) (memoized func(int) int, callCount func() int) {
 	// YOUR CODE HERE
 	_ = fmt.Sprintf // hint: you won't need fmt, but the import is here for other functions

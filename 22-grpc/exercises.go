@@ -102,10 +102,10 @@ func (s *UserServiceImpl) ListUsers(req *ListUsersRequest, stream UserStream) er
 //
 // Write a standalone GetUserHandler function that simulates what happens
 // inside a gRPC server when a unary RPC is received:
-//   1. Extract metadata from the context (look for "x-request-id")
-//   2. Check the context for deadline/cancellation before doing work
-//   3. Look up the user in the store
-//   4. Return appropriate status errors
+//  1. Extract metadata from the context (look for "x-request-id")
+//  2. Check the context for deadline/cancellation before doing work
+//  3. Look up the user in the store
+//  4. Return appropriate status errors
 //
 // This teaches you the full lifecycle of a gRPC request handler.
 //
@@ -184,7 +184,7 @@ type DomainError struct {
 type DomainErrorKind int
 
 const (
-	ErrNotFound      DomainErrorKind = iota
+	ErrNotFound DomainErrorKind = iota
 	ErrAlreadyExists
 	ErrInvalidInput
 	ErrUnauthorized
@@ -255,12 +255,12 @@ func NewLoggingInterceptor(log *CallLog) UnaryServerInterceptor {
 //
 // DoWorkWithDeadline simulates work that takes `workDuration` to complete.
 // It should:
-//   1. Check if the context is already expired before starting. If so,
-//      return "", DeadlineExceeded error.
-//   2. Use select with time.After(workDuration) and ctx.Done() to either
-//      complete the work or respect the deadline.
-//   3. On success, return "completed" and nil.
-//   4. On deadline exceeded, return "" and a DeadlineExceeded status error.
+//  1. Check if the context is already expired before starting. If so,
+//     return "", DeadlineExceeded error.
+//  2. Use select with time.After(workDuration) and ctx.Done() to either
+//     complete the work or respect the deadline.
+//  3. On success, return "completed" and nil.
+//  4. On deadline exceeded, return "" and a DeadlineExceeded status error.
 func DoWorkWithDeadline(ctx context.Context, workDuration time.Duration) (string, error) {
 	// YOUR CODE HERE
 	return "", nil
@@ -318,15 +318,15 @@ func (sh *ServiceHealth) OverallHealth() ServingStatus {
 //   - call: the gRPC call to make (a function that takes ctx and returns result+error)
 //
 // Behavior:
-//   1. Make the call. If it succeeds, return the result immediately.
-//   2. If it fails with a non-retryable error, return the error immediately.
-//      Use IsRetryable() to check.
-//   3. If it fails with a retryable error, wait for the backoff duration
-//      (use config.CalculateBackoff(attempt)) and try again.
-//   4. While waiting, check for context cancellation (use select with
-//      time.After and ctx.Done()).
-//   5. If max retries are exhausted, return the last error.
-//   6. The attempt counter starts at 0 for the first retry wait.
+//  1. Make the call. If it succeeds, return the result immediately.
+//  2. If it fails with a non-retryable error, return the error immediately.
+//     Use IsRetryable() to check.
+//  3. If it fails with a retryable error, wait for the backoff duration
+//     (use config.CalculateBackoff(attempt)) and try again.
+//  4. While waiting, check for context cancellation (use select with
+//     time.After and ctx.Done()).
+//  5. If max retries are exhausted, return the last error.
+//  6. The attempt counter starts at 0 for the first retry wait.
 //
 // Note: The call function is generic (returns interface{}) because real
 // gRPC calls return different response types.

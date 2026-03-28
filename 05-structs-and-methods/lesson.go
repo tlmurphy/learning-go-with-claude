@@ -159,7 +159,7 @@ func (p Person) FullName() string {
 
 // Employee embeds Person — it gets all of Person's fields and methods.
 type Employee struct {
-	Person            // Embedded (not named "Person Person" — that's different)
+	Person     // Embedded (not named "Person Person" — that's different)
 	EmployeeID string
 	Department string
 }

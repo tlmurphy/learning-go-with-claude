@@ -446,7 +446,7 @@ func (rl *RateLimiter) Allow(ip string) bool {
 	elapsed := time.Since(v.lastSeen)
 	v.lastSeen = time.Now()
 
-	tokensToAdd := int(elapsed / rl.interval) * rl.rate
+	tokensToAdd := int(elapsed/rl.interval) * rl.rate
 	v.tokens += tokensToAdd
 	if v.tokens > rl.rate {
 		v.tokens = rl.rate
@@ -627,10 +627,10 @@ func NewProductionStack(handler http.Handler, logger *log.Logger) http.Handler {
 
 	// Apply middlewares — outermost first
 	return Chain(handler,
-		RecoveryMiddleware(logger),       // 1. Catch panics
-		RequestIDMiddleware,              // 2. Add request IDs
-		LoggingMiddleware(logger),        // 3. Log requests
-		CORSMiddleware(cors),             // 4. Handle CORS
-		RateLimitMiddleware(limiter),     // 5. Rate limit
+		RecoveryMiddleware(logger),   // 1. Catch panics
+		RequestIDMiddleware,          // 2. Add request IDs
+		LoggingMiddleware(logger),    // 3. Log requests
+		CORSMiddleware(cors),         // 4. Handle CORS
+		RateLimitMiddleware(limiter), // 5. Rate limit
 	)
 }
