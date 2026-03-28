@@ -7,20 +7,23 @@ commented lesson files, then challenges you with exercises verified by tests.
 
 ### For Each Module
 
-1. **Read** `lesson.go` — commented code explaining each concept with examples
-2. **Implement** `exercises.go` — fill in the stubbed functions (look for `// YOUR CODE HERE`)
-3. **Verify** — run the tests to check your work:
+1. **Run the demos** — see the lesson concepts in action:
 
 ```bash
-# Run tests for a specific module
-go test ./01-variables-and-types/
-
-# Run with verbose output to see individual test names
-go test -v ./01-variables-and-types/
-
-# Run a single test
-go test -v -run TestExercise1 ./01-variables-and-types/
+make lesson 01
 ```
+
+2. **Read** `lesson.go` — commented code explaining each concept with examples
+3. **Implement** `exercises.go` — fill in the stubbed functions (look for `// YOUR CODE HERE`)
+4. **Verify** — run the tests to check your work:
+
+```bash
+make test 01
+```
+
+> **Note:** `make lesson` requires an `examples_test.go` file in the module.
+> This is a work in progress — not all modules have one yet. `make test` works
+> for all modules.
 
 ### For Projects
 
