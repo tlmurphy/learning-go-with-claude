@@ -418,6 +418,23 @@ func DemoWaitGroup() []int {
 	return results
 }
 
+// Go 1.25+ Modern Alternative:
+// sync.WaitGroup now has a .Go() method that handles Add/Done automatically:
+//
+//   var wg sync.WaitGroup
+//   for i := range 5 {
+//       n := i
+//       wg.Go(func() {
+//           mu.Lock()
+//           results = append(results, n*n)
+//           mu.Unlock()
+//       })
+//   }
+//   wg.Wait()
+//
+// This eliminates the most common WaitGroup bug: mismatched Add/Done calls.
+// The classic pattern above is still valid and appears in most existing codebases.
+
 // ==========================================
 // Channel as Semaphore
 // ==========================================

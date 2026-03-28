@@ -126,6 +126,26 @@ Benchmark functions measure performance:
 Run with: go test -bench=. -benchmem
 The framework automatically determines b.N for stable measurements.
 
+Go 1.24+ Modern Alternative: b.Loop()
+.......................................
+Go 1.24 introduced b.Loop() as a cleaner replacement for the b.N loop:
+
+  func BenchmarkConcat(b *testing.B) {
+      for b.Loop() {
+          _ = concat("hello", "world")
+      }
+  }
+
+b.Loop() has two advantages over the classic for/b.N pattern:
+  1. Simpler — no manual loop variable or comparison
+  2. Prevents the compiler from optimizing away the loop body, which
+     eliminates a common benchmarking pitfall (see Module 26 for details
+     on the "sink to package-level variable" trick that b.Loop() makes
+     unnecessary)
+
+The classic for/b.N pattern still works and you'll see it everywhere in
+existing code, but b.Loop() is the recommended approach for new benchmarks.
+
 Example Functions
 ------------------
 Example functions serve as both documentation and tests:

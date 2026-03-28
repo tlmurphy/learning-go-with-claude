@@ -28,7 +28,7 @@ Critical rules:
   - Call Done() with defer as the first statement in the goroutine
   - Never copy a WaitGroup after first use (pass by pointer)
 
-Note: Go 1.25 will add WaitGroup.Go() for cleaner usage:
+Note: As of Go 1.25, WaitGroup has a .Go() method for cleaner usage:
   wg.Go(func() { ... })  // Handles Add and Done automatically
 
 sync.Mutex and sync.RWMutex
@@ -211,6 +211,24 @@ func DemoWaitGroup() []string {
 	wg.Wait() // Block until all goroutines are done
 	return results
 }
+
+// Go 1.25+ Modern Alternative:
+// sync.WaitGroup now has a .Go() method that handles Add/Done automatically:
+//
+//   var wg sync.WaitGroup
+//   for _, task := range tasks {
+//       t := task
+//       wg.Go(func() {
+//           result := fmt.Sprintf("completed: %s", t)
+//           mu.Lock()
+//           results = append(results, result)
+//           mu.Unlock()
+//       })
+//   }
+//   wg.Wait()
+//
+// This eliminates the most common WaitGroup bug: mismatched Add/Done calls.
+// The classic pattern above is still valid and appears in most existing codebases.
 
 // ==========================================
 // Mutex Pattern: Thread-Safe Counter

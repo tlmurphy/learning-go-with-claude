@@ -43,6 +43,17 @@ everything: warm-up, iteration count, timing.
       }
   }
 
+Go 1.24+ Modern Alternative — b.Loop():
+
+  func BenchmarkFoo(b *testing.B) {
+      for b.Loop() {
+          Foo()
+      }
+  }
+
+b.Loop() is simpler and also prevents the compiler from optimizing
+away the loop body — a common benchmarking pitfall with the b.N pattern.
+
 Key points:
   - b.N is set by the framework — it runs enough iterations for stable timing
   - The framework automatically increases b.N until the benchmark runs long
@@ -310,6 +321,9 @@ To prevent this:
 
 Without assigning to a package-level variable, the compiler might notice
 that r is never used outside the benchmark and eliminate the Foo() call.
+
+Note: If you use b.Loop() (Go 1.24+) instead of the manual b.N loop,
+the compiler cannot eliminate the loop body, so this sink trick is unnecessary.
 
 =============================================================================
 */

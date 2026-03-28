@@ -139,7 +139,7 @@ type ErrorDetail struct {
 
 // writeJSON is a helper that writes a JSON response with the given status code.
 // Centralizing this avoids repeating Content-Type and encoding logic everywhere.
-func writeJSON(w http.ResponseWriter, status int, v interface{}) {
+func writeJSON(w http.ResponseWriter, status int, v any) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(v)
@@ -302,7 +302,7 @@ what to fix.
 
 // decodeJSON is a helper that decodes a JSON request body with proper
 // error handling. It limits the body size and returns a descriptive error.
-func decodeJSON(r *http.Request, v interface{}) error {
+func decodeJSON(r *http.Request, v any) error {
 	// Limit request body to 1 MB
 	r.Body = http.MaxBytesReader(nil, r.Body, 1<<20)
 

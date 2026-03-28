@@ -119,4 +119,4 @@ go test ./projects/01-cli-task-manager/...
 
 ## Go Version
 
-This tutorial targets **Go 1.24+**. Some lesson files note features coming in Go 1.25 and 1.26.
+This tutorial targets **Go 1.26**.

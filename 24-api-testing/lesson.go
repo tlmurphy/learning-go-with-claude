@@ -600,7 +600,7 @@ func LoadGoldenFile(t *testing.T, name string) []byte {
 // This makes golden file comparisons reliable regardless of formatting.
 func NormalizeJSON(t *testing.T, data []byte) []byte {
 	t.Helper()
-	var v interface{}
+	var v any
 	if err := json.Unmarshal(data, &v); err != nil {
 		t.Fatalf("Failed to parse JSON: %v\nInput: %s", err, string(data))
 	}

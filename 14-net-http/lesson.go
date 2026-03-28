@@ -197,7 +197,7 @@ func DemoRequestInspection(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	// Extract various request properties
-	info := map[string]interface{}{
+	info := map[string]any{
 		"method":      r.Method,
 		"path":        r.URL.Path,
 		"host":        r.Host,
@@ -513,7 +513,7 @@ func DemoJSONDecoding(w http.ResponseWriter, r *http.Request) {
 
 	// Decode JSON directly from the body stream — no need to read into []byte first.
 	// This is more memory-efficient for large payloads.
-	var payload map[string]interface{}
+	var payload map[string]any
 	decoder := json.NewDecoder(r.Body)
 	decoder.DisallowUnknownFields() // strict mode: reject unknown JSON keys
 	if err := decoder.Decode(&payload); err != nil {
@@ -523,7 +523,7 @@ func DemoJSONDecoding(w http.ResponseWriter, r *http.Request) {
 
 	// Respond with the decoded data
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]interface{}{
+	json.NewEncoder(w).Encode(map[string]any{
 		"received": payload,
 		"message":  "JSON decoded successfully",
 	})

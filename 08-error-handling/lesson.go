@@ -252,6 +252,11 @@ func DemoCustomErrors() {
 		fmt.Printf("Validation failed on field: %s\n", ve.Field)
 	}
 
+	// Go 1.26 alternative — cleaner, no pointer variable needed:
+	// if ve, ok := errors.AsType[*FieldError](apiErr); ok {
+	//     fmt.Printf("Validation failed on field: %s\n", ve.Field)
+	// }
+
 	// errors.Is still works through the chain if needed
 	// (In this case, valErr doesn't wrap anything, but the chain is RequestError -> FieldError)
 }
@@ -423,14 +428,14 @@ func DemoRecover() {
        }
    }()
 
- NOTE ON GO 1.26:
- Go 1.26 will likely add errors.AsType[T](), a generic helper that makes
- type assertions on errors cleaner:
+ GO 1.26: errors.AsType[T]()
+ Go 1.26 adds errors.AsType[T](), a generic helper that makes type
+ assertions on errors cleaner:
 
    if apiErr, ok := errors.AsType[*APIError](err); ok {
-       // use apiErr
+       // use apiErr directly — no separate variable declaration needed
    }
 
- This avoids the awkward two-step of declaring a variable then calling
- errors.As. Keep an eye out for it!
+ This replaces the awkward two-step of declaring a typed variable then
+ passing its address to errors.As. Prefer AsType in new code.
 */

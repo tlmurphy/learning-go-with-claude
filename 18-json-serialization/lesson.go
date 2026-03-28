@@ -449,14 +449,14 @@ func DemoJSONNumber() {
 	input := `{"id": 9007199254740993, "amount": "12.34"}`
 
 	// Default: numbers become float64 (precision risk)
-	var m1 map[string]interface{}
+	var m1 map[string]any
 	json.Unmarshal([]byte(input), &m1)
 	fmt.Printf("Default float64: %v (type: %T)\n", m1["id"], m1["id"])
 
 	// With UseNumber: numbers stay as json.Number strings
 	dec := json.NewDecoder(strings.NewReader(input))
 	dec.UseNumber()
-	var m2 map[string]interface{}
+	var m2 map[string]any
 	dec.Decode(&m2)
 	if num, ok := m2["id"].(json.Number); ok {
 		// Convert to int64 with full precision
@@ -493,15 +493,15 @@ func DemoJSONNumber() {
 func DemoMapJSON() {
 	// Unmarshal into a map when structure is unknown
 	input := `{"name": "Alice", "scores": [95, 87, 92], "active": true}`
-	var m map[string]interface{}
+	var m map[string]any
 	json.Unmarshal([]byte(input), &m)
 
 	name := m["name"].(string)
-	scores := m["scores"].([]interface{})
+	scores := m["scores"].([]any)
 	fmt.Printf("Name: %s, First score: %v\n", name, scores[0])
 
 	// Marshal from a map (useful for building dynamic JSON)
-	response := map[string]interface{}{
+	response := map[string]any{
 		"status": "ok",
 		"count":  42,
 		"items":  []string{"a", "b", "c"},

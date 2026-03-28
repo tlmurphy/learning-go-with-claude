@@ -342,7 +342,7 @@ func DemoSubrouting() *http.ServeMux {
 	v2 := http.NewServeMux()
 	v2.HandleFunc("GET /users", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(map[string]interface{}{
+		json.NewEncoder(w).Encode(map[string]any{
 			"version": "v2",
 			"action":  "list users",
 			"meta":    map[string]int{"total": 0, "page": 1},

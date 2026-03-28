@@ -276,6 +276,55 @@ func stringPtr(s string) *string {
 }
 
 // -------------------------------------------------------------------------
+// Go 1.26 Addition: new(value) Syntax
+// -------------------------------------------------------------------------
+
+/*
+ Go 1.26 extended new() to accept an initial value:
+
+   p := new(42)       // *int pointing to 42  (was not possible before)
+   p := new("hello")  // *string pointing to "hello"
+
+ This is especially useful for struct fields that are pointers. Before 1.26,
+ you needed a helper function or a temporary variable:
+
+   // Before 1.26 — awkward workarounds:
+   age := 30
+   p := Person{Name: "Alice", Age: &age}          // temporary variable
+   p := Person{Name: "Alice", Age: intPtr(30)}     // helper function
+
+   // Go 1.26 — clean and direct:
+   p := Person{Name: "Alice", Age: new(30)}
+
+ The classic new(T) with no value still works — it returns a pointer to the
+ zero value, just like before. The new(value) form is an addition, not a
+ replacement.
+*/
+
+func DemoNewWithValue() {
+	// new(value) — creates a pointer initialized to the given value
+	p := new(42)
+	fmt.Println(*p) // 42
+
+	// Especially handy for struct literals with pointer fields
+	type Config struct {
+		Host    string
+		Port    *int
+		Timeout *int
+	}
+	cfg := Config{
+		Host:    "example.com",
+		Port:    new(8080),
+		Timeout: new(30),
+	}
+	fmt.Printf("port=%d, timeout=%d\n", *cfg.Port, *cfg.Timeout)
+
+	// The old zero-value form still works
+	z := new(int) // *int pointing to 0
+	fmt.Println(*z) // 0
+}
+
+// -------------------------------------------------------------------------
 // Stack vs Heap (Escape Analysis Preview)
 // -------------------------------------------------------------------------
 

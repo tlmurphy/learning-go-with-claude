@@ -324,7 +324,7 @@ func StatusError(code Code, msg string) error {
 }
 
 // StatusErrorf returns a new Status error with a formatted message.
-func StatusErrorf(code Code, format string, args ...interface{}) error {
+func StatusErrorf(code Code, format string, args ...any) error {
 	return &Status{code: code, message: fmt.Sprintf(format, args...)}
 }
 
@@ -413,24 +413,24 @@ type UnaryServerInfo struct {
 }
 
 // UnaryHandler is the handler function for a unary RPC.
-type UnaryHandler func(ctx context.Context, req interface{}) (interface{}, error)
+type UnaryHandler func(ctx context.Context, req any) (any, error)
 
 // UnaryServerInterceptor is a function that intercepts unary RPC calls.
 type UnaryServerInterceptor func(
 	ctx context.Context,
-	req interface{},
+	req any,
 	info *UnaryServerInfo,
 	handler UnaryHandler,
-) (interface{}, error)
+) (any, error)
 
 // DemoLoggingInterceptor shows a simple logging interceptor.
 func DemoLoggingInterceptor() UnaryServerInterceptor {
 	return func(
 		ctx context.Context,
-		req interface{},
+		req any,
 		info *UnaryServerInfo,
 		handler UnaryHandler,
-	) (interface{}, error) {
+	) (any, error) {
 		start := time.Now()
 		fmt.Printf("[gRPC] %s started\n", info.FullMethod)
 
@@ -457,7 +457,7 @@ func DemoLoggingInterceptor() UnaryServerInterceptor {
 func ChainUnaryInterceptors(interceptors ...UnaryServerInterceptor) UnaryServerInterceptor {
 	if len(interceptors) == 0 {
 		// No-op interceptor — just call the handler directly
-		return func(ctx context.Context, req interface{}, info *UnaryServerInfo, handler UnaryHandler) (interface{}, error) {
+		return func(ctx context.Context, req any, info *UnaryServerInfo, handler UnaryHandler) (any, error) {
 			return handler(ctx, req)
 		}
 	}
@@ -465,14 +465,14 @@ func ChainUnaryInterceptors(interceptors ...UnaryServerInterceptor) UnaryServerI
 		return interceptors[0]
 	}
 
-	return func(ctx context.Context, req interface{}, info *UnaryServerInfo, handler UnaryHandler) (interface{}, error) {
+	return func(ctx context.Context, req any, info *UnaryServerInfo, handler UnaryHandler) (any, error) {
 		// Build the chain from inside out: each interceptor wraps the next
 		currentHandler := handler
 		for i := len(interceptors) - 1; i > 0; i-- {
 			// Capture loop variable
 			interceptor := interceptors[i]
 			next := currentHandler
-			currentHandler = func(ctx context.Context, req interface{}) (interface{}, error) {
+			currentHandler = func(ctx context.Context, req any) (any, error) {
 				return interceptor(ctx, req, info, next)
 			}
 		}

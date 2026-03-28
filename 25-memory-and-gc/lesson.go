@@ -350,7 +350,7 @@ func DemoStringConcatenation() {
 func DemoSyncPool() {
 	// Create a pool of bytes.Buffer objects
 	pool := &sync.Pool{
-		New: func() interface{} {
+		New: func() any {
 			fmt.Println("  Creating new buffer")
 			return new(bytes.Buffer)
 		},
