@@ -1,0 +1,8 @@
+{
+  "error": "validation failed",
+  "code": 400,
+  "details": [
+    {"field": "name", "message": "name is required"},
+    {"field": "email", "message": "invalid email format"}
+  ]
+}

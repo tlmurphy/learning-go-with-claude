@@ -1,0 +1,8 @@
+name,age,city
+"Alice",30,"New York"
+"Bob","25","San Francisco"
+simple,csv,line
+"quoted ""field""",normal,end
+single
+"","",""
+a,b,c,d,e,f
