@@ -22,7 +22,7 @@ import (
 
  Run the tests with:
 
-   go test -v ./21-graceful-shutdown/
+   make test 21
 
  Tip: Run a single test at a time while working:
 

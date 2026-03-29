@@ -21,9 +21,9 @@ make lesson 01
 make test 01
 ```
 
-> **Note:** `make lesson` requires an `examples_test.go` file in the module.
-> This is a work in progress — not all modules have one yet. `make test` works
-> for all modules.
+> **Note:** Most modules support `make lesson`. A few (14, 15, 21) have
+> HTTP handler or signal-based demos that can't run this way — read their
+> `lesson.go` files directly instead.
 
 ### For Projects
 

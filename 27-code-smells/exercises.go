@@ -18,7 +18,7 @@ import (
 
  Run the tests with:
 
-   go test -v ./27-code-smells/
+   make test 27
 
  Tip: Read the "smelly" version carefully, understand what it does, then
  write a cleaner version that produces the same results.

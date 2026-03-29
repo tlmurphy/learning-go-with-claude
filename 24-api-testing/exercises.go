@@ -14,7 +14,7 @@ import (
  Work through these exercises in order. Each one builds on concepts from
  the lesson. Run the tests with:
 
-   go test -v ./24-api-testing/
+   make test 24
 
  Tip: Run a single test at a time while working:
 

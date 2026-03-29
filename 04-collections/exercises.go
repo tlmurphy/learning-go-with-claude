@@ -7,7 +7,7 @@ package collections
 
  Work through these exercises in order. Run tests with:
 
-   go test -v ./04-collections/
+   make test 04
 
  Run a single test:
 

@@ -9,7 +9,7 @@ import "fmt"
 
  Work through these exercises in order. Run tests with:
 
-   go test -v ./03-functions/
+   make test 03
 
  Run a single test:
 

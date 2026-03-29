@@ -18,7 +18,7 @@ import (
 
  Run the tests with:
 
-   go test -v ./19-database-access/
+   make test 19
 
  Tip: Run a single test at a time while working:
 

@@ -15,7 +15,7 @@ import (
  These exercises focus on writing benchmarks, comparing approaches, and
  understanding performance characteristics. Run the tests with:
 
-   go test -v ./26-profiling/
+   make test 26
 
  Run benchmarks with:
 

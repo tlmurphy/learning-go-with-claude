@@ -13,7 +13,7 @@ import (
  Work through these exercises in order. Each one builds on concepts from
  the lesson. Run the tests with:
 
-   go test -v ./22-grpc/
+   make test 22
 
  Tip: Run a single test at a time while working:
 

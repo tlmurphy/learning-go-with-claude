@@ -14,7 +14,7 @@ import (
  Work through these exercises in order. Each one builds on concepts from
  the lesson. Run the tests with:
 
-   go test -v ./18-json-serialization/
+   make test 18
 
  Tip: Run a single test at a time while working:
 

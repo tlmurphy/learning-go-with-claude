@@ -18,7 +18,7 @@ import (
 
  These exercises build real production-quality components. Run tests with:
 
-   go test -v ./29-production-patterns/
+   make test 29
 
  Each exercise is a building block that could be used in a real service.
 

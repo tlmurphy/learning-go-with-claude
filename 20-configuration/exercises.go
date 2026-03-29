@@ -18,7 +18,7 @@ import (
  Work through these exercises in order. Each one builds on concepts from
  the lesson. Run the tests with:
 
-   go test -v ./20-configuration/
+   make test 20
 
  Tip: Run a single test at a time while working:
 

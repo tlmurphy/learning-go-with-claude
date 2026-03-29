@@ -13,7 +13,7 @@ import (
 
  Work through these exercises to practice Go's DI patterns. Run tests with:
 
-   go test -v ./28-dependency-injection/
+   make test 28
 
  Each exercise builds toward a complete, properly-wired service.
 

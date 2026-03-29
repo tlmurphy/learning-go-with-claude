@@ -14,7 +14,7 @@ import (
  Work through these exercises in order. Each builds on concepts from the
  lesson. Run the tests with:
 
-   go test -v ./25-memory-and-gc/
+   make test 25
 
  Several exercises ask you to write benchmarks. Run benchmarks with:
 
