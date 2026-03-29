@@ -121,7 +121,7 @@ func SafeIntToInt8(n int) (int8, bool) {
 // can be 4 bytes each).
 //
 // Hint: convert the string to []rune for character-level operations.
-func StringByteRuneAnalysis(s string) (byteCount int, runeCount int, firstRune rune, lastRune rune) {
+func StringByteRuneAnalysis(s string) (int, int, rune, rune) {
 	// YOUR CODE HERE
 	return 0, 0, 0, 0
 }
