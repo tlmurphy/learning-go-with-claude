@@ -20,7 +20,7 @@ test:
 		exit 1; \
 	fi; \
 	echo "Running tests for $$module"; \
-	go test -v ./$$module/
+	go test -v -skip "TestDemo" ./$$module/
 
 # Catch the module number argument so make doesn't complain
 %:

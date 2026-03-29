@@ -11,34 +11,60 @@ import (
 
  Work through these exercises in order. Run tests with:
 
-   go test -v ./02-control-flow/
+   make test 02
 
  Run a single test:
 
-   go test -v -run TestFizzBuzz ./02-control-flow/
+   go test -v -run TestSafeIntToInt8 ./02-control-flow/
 
 =============================================================================
 */
 
-// Exercise 1: FizzBuzz
+// Exercise 1: SafeIntToInt8
 //
-// The classic — but write it in idiomatic Go.
+// Convert an int to int8 safely. If the value is outside the range of
+// int8 (-128 to 127), return 0 and false. Otherwise return the converted
+// value and true.
 //
-// Given an integer n, return a string slice containing the FizzBuzz sequence
-// from 1 to n (inclusive):
-//   - If the number is divisible by 3, use "Fizz"
-//   - If the number is divisible by 5, use "Buzz"
-//   - If divisible by both 3 and 5, use "FizzBuzz"
-//   - Otherwise, use the number as a string (e.g., "1", "2", "4")
+// This teaches two things:
+//  1. Explicit type conversion (Go won't do it for you)
+//  2. The comma-ok pattern (returning a success bool alongside a value)
 //
-// Use fmt.Sprintf or strconv.Itoa for number-to-string conversion.
-// Think about the order of your conditions!
-func FizzBuzz(n int) []string {
+// You'll see the comma-ok pattern everywhere in Go:
+//
+//	value, ok := myMap[key]
+//	value, err := strconv.Atoi(s)
+func SafeIntToInt8(n int) (int8, bool) {
 	// YOUR CODE HERE
-	return nil
+	return 0, false
 }
 
-// Exercise 2: ClassifyAge
+// Exercise 2: EvaluateScore
+//
+// Given a UserScore (a type definition over int), return:
+//   - The score as a float64 percentage (score / MaxScore * 100)
+//   - A rating string based on the percentage:
+//       >= 90: "excellent"
+//       >= 70: "good"
+//       >= 50: "fair"
+//       <  50: "needs improvement"
+//   - Whether the score is passing (>= 50%)
+//
+// The MaxScore constant is 200.
+
+// UserScore is a distinct type representing a user's score.
+type UserScore int
+
+// MaxScore is the maximum possible score.
+const MaxScore UserScore = 200
+
+// EvaluateScore analyzes a UserScore and returns a percentage, rating, and pass/fail.
+func EvaluateScore(score UserScore) (float64, string, bool) {
+	// YOUR CODE HERE
+	return 0, "", false
+}
+
+// Exercise 3: ClassifyAge
 //
 // Use an if statement with an init statement to classify an age string.
 //
@@ -59,7 +85,25 @@ func ClassifyAge(age int) string {
 	return ""
 }
 
-// Exercise 3: DayType
+// Exercise 4: FizzBuzz
+//
+// The classic — but write it in idiomatic Go.
+//
+// Given an integer n, return a string slice containing the FizzBuzz sequence
+// from 1 to n (inclusive):
+//   - If the number is divisible by 3, use "Fizz"
+//   - If the number is divisible by 5, use "Buzz"
+//   - If divisible by both 3 and 5, use "FizzBuzz"
+//   - Otherwise, use the number as a string (e.g., "1", "2", "4")
+//
+// Use fmt.Sprintf or strconv.Itoa for number-to-string conversion.
+// Think about the order of your conditions!
+func FizzBuzz(n int) []string {
+	// YOUR CODE HERE
+	return nil
+}
+
+// Exercise 5: DayType
 //
 // Use a switch statement to categorize days of the week.
 //
@@ -77,7 +121,28 @@ func DayType(day string) string {
 	return ""
 }
 
-// Exercise 4: CountUnicodeCategories
+// Exercise 6: StringByteRuneAnalysis
+//
+// Given a string, return:
+//   - the number of bytes in the string
+//   - the number of runes (characters) in the string
+//   - the first rune (character) as a rune
+//   - the last rune (character) as a rune
+//
+// For an empty string, return (0, 0, 0, 0).
+//
+// This is practical: when validating user input in a web form, you
+// usually care about character count, not byte count. A username limit
+// of "20 characters" should allow 20 emoji, not just 5 (since emoji
+// can be 4 bytes each).
+//
+// Hint: convert the string to []rune for character-level operations.
+func StringByteRuneAnalysis(s string) (int, int, rune, rune) {
+	// YOUR CODE HERE
+	return 0, 0, 0, 0
+}
+
+// Exercise 7: CountUnicodeCategories
 //
 // Range over a string and count characters by category.
 //
@@ -98,7 +163,7 @@ func CountUnicodeCategories(s string) (upper, lower, digits, spaces, other int) 
 	return 0, 0, 0, 0, 0
 }
 
-// Exercise 5: FindInMatrix
+// Exercise 8: FindInMatrix
 //
 // Search a 2D integer matrix for a target value using nested loops
 // with a labeled break.
@@ -113,7 +178,26 @@ func FindInMatrix(matrix [][]int, target int) (row, col int, found bool) {
 	return -1, -1, false
 }
 
-// Exercise 6: StateMachine
+// Exercise 9: CollatzSteps
+//
+// The Collatz conjecture: start with any positive integer n.
+//   - If n is even, divide by 2
+//   - If n is odd, multiply by 3 and add 1
+//   - Repeat until you reach 1
+//
+// Return the number of steps it takes to reach 1.
+// If n <= 0, return -1 (invalid input).
+// If n == 1, return 0 (already at 1).
+//
+// Example: n=6 -> 6, 3, 10, 5, 16, 8, 4, 2, 1 = 8 steps
+//
+// Use a for loop (while-style). Think about which loop form is most natural.
+func CollatzSteps(n int) int {
+	// YOUR CODE HERE
+	return 0
+}
+
+// Exercise 10: StateMachine
 //
 // Build a simple state machine that processes a string of commands.
 //
@@ -136,26 +220,7 @@ func StateMachine(commands []string) string {
 	return ""
 }
 
-// Exercise 7: CollatzSteps
-//
-// The Collatz conjecture: start with any positive integer n.
-//   - If n is even, divide by 2
-//   - If n is odd, multiply by 3 and add 1
-//   - Repeat until you reach 1
-//
-// Return the number of steps it takes to reach 1.
-// If n <= 0, return -1 (invalid input).
-// If n == 1, return 0 (already at 1).
-//
-// Example: n=6 -> 6, 3, 10, 5, 16, 8, 4, 2, 1 = 8 steps
-//
-// Use a for loop (while-style). Think about which loop form is most natural.
-func CollatzSteps(n int) int {
-	// YOUR CODE HERE
-	return 0
-}
-
-// Exercise 8: ProcessRecords
+// Exercise 11: ProcessRecords
 //
 // This exercise combines multiple control flow patterns.
 //
