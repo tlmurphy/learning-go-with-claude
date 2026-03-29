@@ -86,47 +86,7 @@ func GetStatusCategories() (int, int, int, int, int) {
 	return 0, 0, 0, 0, 0
 }
 
-// Exercise 4: SafeIntToInt8
-//
-// Convert an int to int8 safely. If the value is outside the range of
-// int8 (-128 to 127), return 0 and false. Otherwise return the converted
-// value and true.
-//
-// This teaches two things:
-//  1. Explicit type conversion (Go won't do it for you)
-//  2. The comma-ok pattern (returning a success bool alongside a value)
-//
-// You'll see the comma-ok pattern everywhere in Go:
-//
-//	value, ok := myMap[key]
-//	value, err := strconv.Atoi(s)
-func SafeIntToInt8(n int) (int8, bool) {
-	// YOUR CODE HERE
-	return 0, false
-}
-
-// Exercise 5: StringByteRuneAnalysis
-//
-// Given a string, return:
-//   - the number of bytes in the string
-//   - the number of runes (characters) in the string
-//   - the first rune (character) as a rune
-//   - the last rune (character) as a rune
-//
-// For an empty string, return (0, 0, 0, 0).
-//
-// This is practical: when validating user input in a web form, you
-// usually care about character count, not byte count. A username limit
-// of "20 characters" should allow 20 emoji, not just 5 (since emoji
-// can be 4 bytes each).
-//
-// Hint: convert the string to []rune for character-level operations.
-func StringByteRuneAnalysis(s string) (int, int, rune, rune) {
-	// YOUR CODE HERE
-	return 0, 0, 0, 0
-}
-
-// Exercise 6: Type Definitions — Temperature Converter
+// Exercise 4: Type Definitions — Temperature Converter
 //
 // Implement these conversion functions between Kelvin and Celsius.
 // Kelvin = Celsius + 273.15
@@ -158,7 +118,7 @@ func AbsoluteZeroCelsius() Celsius {
 	return 0
 }
 
-// Exercise 7: SwapValues
+// Exercise 5: SwapValues
 //
 // Go supports multiple assignment, which makes swapping elegant:
 //
@@ -180,34 +140,3 @@ func SwapStrings(a, b string) (string, string) {
 	return "", ""
 }
 
-// Exercise 8: ParseAndDescribe (Composite Exercise)
-//
-// This exercise combines several concepts from the module:
-//   - Type definitions
-//   - Type conversions
-//   - Constants
-//   - Multiple return values
-//   - String operations
-//
-// Given a UserScore (a type definition over int), return:
-//   - The score as a float64 percentage (score / MaxScore * 100)
-//   - A rating string based on the percentage:
-//       >= 90: "excellent"
-//       >= 70: "good"
-//       >= 50: "fair"
-//       <  50: "needs improvement"
-//   - Whether the score is passing (>= 50%)
-//
-// The MaxScore constant is 200.
-
-// UserScore is a distinct type representing a user's score.
-type UserScore int
-
-// MaxScore is the maximum possible score.
-const MaxScore UserScore = 200
-
-// EvaluateScore analyzes a UserScore and returns a percentage, rating, and pass/fail.
-func EvaluateScore(score UserScore) (percentage float64, rating string, passing bool) {
-	// YOUR CODE HERE
-	return 0, "", false
-}
