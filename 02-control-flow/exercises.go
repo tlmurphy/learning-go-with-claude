@@ -15,7 +15,7 @@ import (
 
  Run a single test:
 
-   go test -v -run TestFizzBuzz ./02-control-flow/
+   go test -v -run TestSafeIntToInt8 ./02-control-flow/
 
 =============================================================================
 */
@@ -39,28 +39,7 @@ func SafeIntToInt8(n int) (int8, bool) {
 	return 0, false
 }
 
-// Exercise 2: StringByteRuneAnalysis
-//
-// Given a string, return:
-//   - the number of bytes in the string
-//   - the number of runes (characters) in the string
-//   - the first rune (character) as a rune
-//   - the last rune (character) as a rune
-//
-// For an empty string, return (0, 0, 0, 0).
-//
-// This is practical: when validating user input in a web form, you
-// usually care about character count, not byte count. A username limit
-// of "20 characters" should allow 20 emoji, not just 5 (since emoji
-// can be 4 bytes each).
-//
-// Hint: convert the string to []rune for character-level operations.
-func StringByteRuneAnalysis(s string) (int, int, rune, rune) {
-	// YOUR CODE HERE
-	return 0, 0, 0, 0
-}
-
-// Exercise 3: EvaluateScore
+// Exercise 2: EvaluateScore
 //
 // Given a UserScore (a type definition over int), return:
 //   - The score as a float64 percentage (score / MaxScore * 100)
@@ -85,25 +64,7 @@ func EvaluateScore(score UserScore) (float64, string, bool) {
 	return 0, "", false
 }
 
-// Exercise 4: FizzBuzz
-//
-// The classic — but write it in idiomatic Go.
-//
-// Given an integer n, return a string slice containing the FizzBuzz sequence
-// from 1 to n (inclusive):
-//   - If the number is divisible by 3, use "Fizz"
-//   - If the number is divisible by 5, use "Buzz"
-//   - If divisible by both 3 and 5, use "FizzBuzz"
-//   - Otherwise, use the number as a string (e.g., "1", "2", "4")
-//
-// Use fmt.Sprintf or strconv.Itoa for number-to-string conversion.
-// Think about the order of your conditions!
-func FizzBuzz(n int) []string {
-	// YOUR CODE HERE
-	return nil
-}
-
-// Exercise 5: ClassifyAge
+// Exercise 3: ClassifyAge
 //
 // Use an if statement with an init statement to classify an age string.
 //
@@ -124,7 +85,25 @@ func ClassifyAge(age int) string {
 	return ""
 }
 
-// Exercise 6: DayType
+// Exercise 4: FizzBuzz
+//
+// The classic — but write it in idiomatic Go.
+//
+// Given an integer n, return a string slice containing the FizzBuzz sequence
+// from 1 to n (inclusive):
+//   - If the number is divisible by 3, use "Fizz"
+//   - If the number is divisible by 5, use "Buzz"
+//   - If divisible by both 3 and 5, use "FizzBuzz"
+//   - Otherwise, use the number as a string (e.g., "1", "2", "4")
+//
+// Use fmt.Sprintf or strconv.Itoa for number-to-string conversion.
+// Think about the order of your conditions!
+func FizzBuzz(n int) []string {
+	// YOUR CODE HERE
+	return nil
+}
+
+// Exercise 5: DayType
 //
 // Use a switch statement to categorize days of the week.
 //
@@ -140,6 +119,27 @@ func DayType(day string) string {
 	// YOUR CODE HERE
 	_ = strings.ToLower(day) // hint: you'll want to use this
 	return ""
+}
+
+// Exercise 6: StringByteRuneAnalysis
+//
+// Given a string, return:
+//   - the number of bytes in the string
+//   - the number of runes (characters) in the string
+//   - the first rune (character) as a rune
+//   - the last rune (character) as a rune
+//
+// For an empty string, return (0, 0, 0, 0).
+//
+// This is practical: when validating user input in a web form, you
+// usually care about character count, not byte count. A username limit
+// of "20 characters" should allow 20 emoji, not just 5 (since emoji
+// can be 4 bytes each).
+//
+// Hint: convert the string to []rune for character-level operations.
+func StringByteRuneAnalysis(s string) (int, int, rune, rune) {
+	// YOUR CODE HERE
+	return 0, 0, 0, 0
 }
 
 // Exercise 7: CountUnicodeCategories
@@ -178,7 +178,26 @@ func FindInMatrix(matrix [][]int, target int) (row, col int, found bool) {
 	return -1, -1, false
 }
 
-// Exercise 9: StateMachine
+// Exercise 9: CollatzSteps
+//
+// The Collatz conjecture: start with any positive integer n.
+//   - If n is even, divide by 2
+//   - If n is odd, multiply by 3 and add 1
+//   - Repeat until you reach 1
+//
+// Return the number of steps it takes to reach 1.
+// If n <= 0, return -1 (invalid input).
+// If n == 1, return 0 (already at 1).
+//
+// Example: n=6 -> 6, 3, 10, 5, 16, 8, 4, 2, 1 = 8 steps
+//
+// Use a for loop (while-style). Think about which loop form is most natural.
+func CollatzSteps(n int) int {
+	// YOUR CODE HERE
+	return 0
+}
+
+// Exercise 10: StateMachine
 //
 // Build a simple state machine that processes a string of commands.
 //
@@ -199,25 +218,6 @@ func FindInMatrix(matrix [][]int, target int) (row, col int, found bool) {
 func StateMachine(commands []string) string {
 	// YOUR CODE HERE
 	return ""
-}
-
-// Exercise 10: CollatzSteps
-//
-// The Collatz conjecture: start with any positive integer n.
-//   - If n is even, divide by 2
-//   - If n is odd, multiply by 3 and add 1
-//   - Repeat until you reach 1
-//
-// Return the number of steps it takes to reach 1.
-// If n <= 0, return -1 (invalid input).
-// If n == 1, return 0 (already at 1).
-//
-// Example: n=6 -> 6, 3, 10, 5, 16, 8, 4, 2, 1 = 8 steps
-//
-// Use a for loop (while-style). Think about which loop form is most natural.
-func CollatzSteps(n int) int {
-	// YOUR CODE HERE
-	return 0
 }
 
 // Exercise 11: ProcessRecords
