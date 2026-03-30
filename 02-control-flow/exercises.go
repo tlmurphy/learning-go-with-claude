@@ -98,6 +98,9 @@ func ClassifyAge(age int) string {
 //
 // Use fmt.Sprintf or strconv.Itoa for number-to-string conversion.
 // Think about the order of your conditions!
+//
+// Hint: Go's modulo operator is %. For example, n%3 == 0 means n is
+// divisible by 3.
 func FizzBuzz(n int) []string {
 	// YOUR CODE HERE
 	return nil
