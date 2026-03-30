@@ -165,6 +165,11 @@ func StringByteRuneAnalysis(s string) (int, int, rune, rune) {
 // unicode.IsDigit, unicode.IsSpace.
 //
 // This is practical: you might validate password complexity this way.
+//
+// Note: This function uses named return values (covered in module 03).
+// The names (upper, lower, etc.) are pre-declared variables initialized
+// to their zero values (0). You can assign to them directly with = (not :=)
+// and return them at the end.
 func CountUnicodeCategories(s string) (upper, lower, digits, spaces, other int) {
 	// YOUR CODE HERE
 	return 0, 0, 0, 0, 0
