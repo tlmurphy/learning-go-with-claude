@@ -282,7 +282,7 @@ func TestCountUnicodeCategories(t *testing.T) {
 		{
 			name:      "password check",
 			input:     "P@ssw0rd!",
-			wantUpper: 1, wantLower: 4, wantDigits: 1, wantSpaces: 0, wantOther: 3,
+			wantUpper: 1, wantLower: 5, wantDigits: 1, wantSpaces: 0, wantOther: 2,
 		},
 		{
 			name:      "empty string",
