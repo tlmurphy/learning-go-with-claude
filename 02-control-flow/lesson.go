@@ -93,6 +93,62 @@ func DemoIfElse() {
 
 /*
 =============================================================================
+ LOGICAL OPERATORS
+=============================================================================
+
+Go has three logical operators for combining boolean expressions:
+
+  &&    AND — both sides must be true
+  ||    OR  — at least one side must be true
+  !     NOT — inverts a boolean
+
+These short-circuit: && stops if the left side is false (no need to check
+the right), and || stops if the left side is true. This matters when the
+right side has side effects or is expensive to compute.
+
+=============================================================================
+*/
+
+// DemoLogicalOperators shows &&, ||, and ! in conditionals.
+func DemoLogicalOperators() {
+	age := 25
+	hasID := true
+	isVIP := false
+
+	// && (AND) — both conditions must be true.
+	if age >= 21 && hasID {
+		fmt.Println("  allowed entry (age and ID check passed)")
+	}
+
+	// || (OR) — at least one condition must be true.
+	if isVIP || age >= 21 {
+		fmt.Println("  can order drinks (VIP or old enough)")
+	}
+
+	// ! (NOT) — inverts a boolean.
+	if !isVIP {
+		fmt.Println("  not a VIP — standard pricing")
+	}
+
+	// Combining them — use parentheses for clarity.
+	minAge := 18
+	maxAge := 65
+	if age >= minAge && age <= maxAge && (hasID || isVIP) {
+		fmt.Println("  eligible for the program")
+	}
+
+	// Short-circuit in action: if the left side of && is false,
+	// the right side never executes.
+	var name *string
+	if name != nil && len(*name) > 0 {
+		fmt.Printf("  name: %s\n", *name)
+	} else {
+		fmt.Println("  no name set (nil pointer safely avoided)")
+	}
+}
+
+/*
+=============================================================================
  SWITCH STATEMENTS
 =============================================================================
 

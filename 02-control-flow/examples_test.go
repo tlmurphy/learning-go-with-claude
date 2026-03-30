@@ -6,6 +6,10 @@ func TestDemoIfElse(t *testing.T) {
 	DemoIfElse()
 }
 
+func TestDemoLogicalOperators(t *testing.T) {
+	DemoLogicalOperators()
+}
+
 func TestDemoSwitch(t *testing.T) {
 	DemoSwitch()
 }
