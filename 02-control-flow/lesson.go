@@ -39,12 +39,10 @@ a variable that's scoped to the if/else block:
 This pattern is EVERYWHERE in Go. You'll see it hundreds of times in any
 Go codebase, especially for error handling:
 
-  if user, err := db.FindUser(id); err != nil {
-      http.Error(w, "user not found", 404)
-      return
-  } else {
-      json.NewEncoder(w).Encode(user)
+  if err := db.Ping(); err != nil {
+      log.Fatal(err)
   }
+  // err doesn't leak into the surrounding scope
 
 The init statement keeps variables tightly scoped, preventing them from
 polluting the surrounding function scope. This is a deliberate design
@@ -77,9 +75,7 @@ func DemoIfElse() {
 
 	// Real-world pattern: parsing with validation.
 	data := "key=value"
-	if idx := strings.Index(data, "="); idx >= 0 {
-		key := data[:idx]
-		value := data[idx+1:]
+	if key, value, ok := strings.Cut(data, "="); ok {
 		fmt.Printf("  parsed: key=%q, value=%q\n", key, value)
 	} else {
 		fmt.Println("  no '=' found in data")
