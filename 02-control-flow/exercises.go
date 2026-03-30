@@ -66,8 +66,6 @@ func EvaluateScore(score UserScore) (float64, string, bool) {
 
 // Exercise 3: ClassifyAge
 //
-// Use an if statement with an init statement to classify an age string.
-//
 // Given an age as an int, return a category string:
 //
 //	age < 0:    "invalid"
@@ -76,10 +74,12 @@ func EvaluateScore(score UserScore) (float64, string, bool) {
 //	age < 65:   "adult"
 //	age >= 65:  "senior"
 //
-// Bonus insight: In a web handler, you'd often parse the age from a query
-// parameter first, then classify:
+// Note: In a web handler, you'd often parse the age from a string first
+// using an init statement:
 //
 //	if age, err := strconv.Atoi(ageParam); err != nil { ... }
+//
+// Here the age is already an int, so a plain if/else if or switch works.
 func ClassifyAge(age int) string {
 	// YOUR CODE HERE
 	return ""
