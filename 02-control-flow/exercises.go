@@ -101,6 +101,10 @@ func ClassifyAge(age int) string {
 //
 // Hint: Go's modulo operator is %. For example, n%3 == 0 means n is
 // divisible by 3.
+//
+// Hint: To build a slice (covered in module 04), create one with
+// result := make([]string, 0, n) and add to it with
+// result = append(result, "value").
 func FizzBuzz(n int) []string {
 	// YOUR CODE HERE
 	return nil
