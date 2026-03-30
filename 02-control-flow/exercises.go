@@ -251,6 +251,12 @@ func StateMachine(commands []string) string {
 //
 // This simulates parsing a simple configuration format — the kind of
 // thing you'd do when processing form data or config files in a web service.
+//
+// Hint: strings.Cut(s, ":") splits a string on the first ":" and returns
+// (before, after, found). For example:
+//
+//	key, value, ok := strings.Cut("host:localhost", ":")
+//	// key="host", value="localhost", ok=true
 func ProcessRecords(records []string) (map[string]string, []string) {
 	// YOUR CODE HERE
 	return nil, nil
