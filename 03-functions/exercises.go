@@ -143,6 +143,9 @@ func NewCounter(start int) (increment, decrement, value func() int) {
 //	"returned: <result>"
 //
 // The log slice is provided as a pointer so the wrapper can append to it.
+// To append to a pointer to a slice, dereference both sides:
+//
+//	*log = append(*log, "new entry")
 //
 // In real Go web servers, this exact pattern is used for logging, auth,
 // rate limiting, etc:
