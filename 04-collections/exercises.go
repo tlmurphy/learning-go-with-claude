@@ -49,21 +49,24 @@ func InsertAt(s []int, index int, val int) []int {
 
 // Exercise 2: Capacity Detective
 //
-// This exercise tests your understanding of slice capacity and growth.
+// This exercise helps you observe how slice capacity grows when you
+// append beyond the initial capacity.
 
-// PredictCapacity creates a slice using make with the given length and capacity,
-// then appends n elements. Return the final length and capacity.
+// ObserveCapacity creates a slice using make with the given length and capacity,
+// then appends appendCount elements. Return the final length and capacity.
 //
-// This helps you understand when append allocates a new backing array.
+// The length is predictable (initialLen + appendCount), but capacity growth
+// is a runtime implementation detail — don't try to calculate it by hand.
+// Instead, create the slice, do the appends, and report what you observe.
 //
-// Example: PredictCapacity(3, 5, 2) creates make([]int, 3, 5), appends 2 elements.
+// Example: ObserveCapacity(3, 5, 2) creates make([]int, 3, 5), appends 2 elements.
 //
 //	Final: len=5, cap=5 (fits in existing capacity)
 //
-// Example: PredictCapacity(3, 5, 4) creates make([]int, 3, 5), appends 4 elements.
+// Example: ObserveCapacity(3, 5, 4) creates make([]int, 3, 5), appends 4 elements.
 //
 //	Final: len=7, cap=10 (exceeded capacity, had to grow)
-func PredictCapacity(initialLen, initialCap, appendCount int) (finalLen, finalCap int) {
+func ObserveCapacity(initialLen, initialCap, appendCount int) (finalLen, finalCap int) {
 	// YOUR CODE HERE
 	return 0, 0
 }

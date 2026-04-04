@@ -94,7 +94,7 @@ func TestInsertAt(t *testing.T) {
 
 // --- Exercise 2: Capacity Detective ---
 
-func TestPredictCapacity(t *testing.T) {
+func TestObserveCapacity(t *testing.T) {
 	tests := []struct {
 		name        string
 		initLen     int
@@ -111,21 +111,21 @@ func TestPredictCapacity(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotLen, gotCap := PredictCapacity(tt.initLen, tt.initCap, tt.appendCount)
+			gotLen, gotCap := ObserveCapacity(tt.initLen, tt.initCap, tt.appendCount)
 			if gotLen != tt.wantLen {
-				t.Errorf("PredictCapacity(%d, %d, %d) len = %d, want %d.\n"+
+				t.Errorf("ObserveCapacity(%d, %d, %d) len = %d, want %d.\n"+
 					"  Hint: Final len = initialLen + appendCount.",
 					tt.initLen, tt.initCap, tt.appendCount, gotLen, tt.wantLen)
 			}
 			// Capacity should be at least as large as length.
 			if gotCap < gotLen {
-				t.Errorf("PredictCapacity(%d, %d, %d) cap = %d, which is less than len = %d.\n"+
+				t.Errorf("ObserveCapacity(%d, %d, %d) cap = %d, which is less than len = %d.\n"+
 					"  Capacity must always be >= length.",
 					tt.initLen, tt.initCap, tt.appendCount, gotCap, gotLen)
 			}
 			// If we didn't exceed initial capacity, it should stay the same.
 			if tt.initLen+tt.appendCount <= tt.initCap && gotCap != tt.initCap {
-				t.Errorf("PredictCapacity(%d, %d, %d) cap = %d, want %d.\n"+
+				t.Errorf("ObserveCapacity(%d, %d, %d) cap = %d, want %d.\n"+
 					"  When appending within capacity, the capacity shouldn't change.",
 					tt.initLen, tt.initCap, tt.appendCount, gotCap, tt.initCap)
 			}
