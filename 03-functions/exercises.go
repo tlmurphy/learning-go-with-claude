@@ -216,7 +216,10 @@ func Compose(f, g func(int) int) func(int) int {
 	return nil
 }
 
-// Exercise 8: Memoize
+// Exercise 8: Memoize (Challenge)
+//
+// This one is tough — it combines closures, maps, and higher-order
+// functions all at once. It's fine to skip this and come back later.
 //
 // Implement a memoized version of a function that takes an int and
 // returns an int. The first time a particular input is seen, compute
