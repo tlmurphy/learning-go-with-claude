@@ -231,6 +231,13 @@ func Compose(f, g func(int) int) func(int) int {
 //
 // This is a practical pattern — in web services, you'd memoize expensive
 // database queries or API calls.
+
+// Hint: this is how you check if a key exists in a map:
+//
+//	value, ok := myMap[key]
+//	if !ok {
+//	    // key doesn't exist
+//	}
 //
 // Example:
 //

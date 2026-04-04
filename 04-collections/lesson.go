@@ -74,7 +74,7 @@ points to an underlying array:
 
   Slice header:
   ┌─────────┬─────┬──────────┐
-  │ pointer  │ len │ capacity │
+  │ pointer │ len │ capacity │
   └─────────┴─────┴──────────┘
        │
        ▼
