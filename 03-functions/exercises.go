@@ -175,9 +175,18 @@ func Logger(fn func(string) string, log *[]string) func(string) string {
 //	SafeCall(func() string { return "hello" })       // returns "hello", nil
 //	SafeCall(func() string { panic("oh no") })       // returns "", error("panic recovered: oh no")
 //
-// Hint: defer runs even when a function panics. Use recover() inside a
-// deferred function to catch the panic. You'll need named return values
-// so the deferred function can modify the return values.
+// Hint: recover() only works inside a deferred function. The pattern is:
+//
+//	defer func() {
+//	    if r := recover(); r != nil {
+//	        // r is the value passed to panic()
+//	        // you can set named return values here
+//	    }
+//	}()
+//
+// Note the () at the end — you're defining and calling an anonymous
+// function via defer. You need named return values so the deferred
+// function can modify what gets returned.
 func SafeCall(fn func() string) (result string, err error) {
 	// YOUR CODE HERE
 	return
