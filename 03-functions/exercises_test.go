@@ -376,29 +376,48 @@ func TestLogger(t *testing.T) {
 	}
 }
 
-func TestDeferOrder(t *testing.T) {
-	tests := []struct {
-		name     string
-		n        int
-		expected string
-	}{
-		{"n=0", 0, ""},
-		{"n=1", 1, "1"},
-		{"n=3", 3, "3,2,1"},
-		{"n=5", 5, "5,4,3,2,1"},
-	}
+func TestSafeCall(t *testing.T) {
+	t.Run("normal function", func(t *testing.T) {
+		result, err := SafeCall(func() string { return "hello" })
+		if err != nil {
+			t.Errorf("SafeCall with normal function returned error: %v", err)
+		}
+		if result != "hello" {
+			t.Errorf("SafeCall with normal function returned %q, want %q", result, "hello")
+		}
+	})
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := DeferOrder(tt.n)
-			if got != tt.expected {
-				t.Errorf("DeferOrder(%d) = %q, want %q.\n"+
-					"  Hint: Defer is LIFO — if you defer 1,2,3, they execute as 3,2,1.\n"+
-					"  Build the string in reverse order: n, n-1, ..., 2, 1.",
-					tt.n, got, tt.expected)
-			}
-		})
-	}
+	t.Run("panicking function with string", func(t *testing.T) {
+		result, err := SafeCall(func() string { panic("oh no") })
+		if err == nil {
+			t.Fatal("SafeCall with panicking function should return an error, got nil")
+		}
+		if result != "" {
+			t.Errorf("SafeCall with panicking function returned %q, want empty string", result)
+		}
+		expected := "panic recovered: oh no"
+		if err.Error() != expected {
+			t.Errorf("SafeCall error = %q, want %q.\n"+
+				"  Hint: Use fmt.Errorf(\"panic recovered: %%v\", r) where r is the recover() value.",
+				err.Error(), expected)
+		}
+	})
+
+	t.Run("panicking function with number", func(t *testing.T) {
+		result, err := SafeCall(func() string { panic(42) })
+		if err == nil {
+			t.Fatal("SafeCall with panicking function should return an error, got nil")
+		}
+		if result != "" {
+			t.Errorf("SafeCall with panicking function returned %q, want empty string", result)
+		}
+		expected := "panic recovered: 42"
+		if err.Error() != expected {
+			t.Errorf("SafeCall error = %q, want %q.\n"+
+				"  Hint: panic() can take any value, not just strings. Use %%v to format it.",
+				err.Error(), expected)
+		}
+	})
 }
 
 func TestCompose(t *testing.T) {

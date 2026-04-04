@@ -157,29 +157,30 @@ func Logger(fn func(string) string, log *[]string) func(string) string {
 	return nil
 }
 
-// Exercise 6: DeferOrder
+// Exercise 6: SafeCall
 //
-// This exercise tests your understanding of defer's LIFO ordering and
-// argument evaluation.
+// This exercise teaches defer's most important real-world use: recovering
+// from panics. In Go web servers, a panic in a handler would crash the
+// entire server — middleware uses exactly this pattern to catch panics
+// and return an error response instead.
 //
-// Given n, build a string showing the order of deferred operations.
-// Use defer to prepend numbers 1 through n to a result slice, then
-// join them.
+// Implement SafeCall: it calls fn() and returns its result. If fn panics,
+// recover the panic and return an empty string and an error containing
+// the panic message.
 //
-// The key insight: because defer is LIFO, deferring 1,2,3 means
-// 3 executes first, then 2, then 1.
+// The error message should be: "panic recovered: <panic value>"
 //
-// DeferOrder(3) should return "3,2,1"
-// DeferOrder(5) should return "5,4,3,2,1"
-// DeferOrder(0) should return ""
+// Example:
 //
-// Hint: You can't actually use defer to build a return value easily.
-// Instead, simulate the LIFO behavior: build the sequence that defer
-// WOULD produce. The point is understanding the order, not literally
-// using defer.
-func DeferOrder(n int) string {
+//	SafeCall(func() string { return "hello" })       // returns "hello", nil
+//	SafeCall(func() string { panic("oh no") })       // returns "", error("panic recovered: oh no")
+//
+// Hint: defer runs even when a function panics. Use recover() inside a
+// deferred function to catch the panic. You'll need named return values
+// so the deferred function can modify the return values.
+func SafeCall(fn func() string) (result string, err error) {
 	// YOUR CODE HERE
-	return ""
+	return
 }
 
 // Exercise 7: Compose
