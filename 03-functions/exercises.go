@@ -175,6 +175,10 @@ func Logger(fn func(string) string, log *[]string) func(string) string {
 //	SafeCall(func() string { return "hello" })       // returns "hello", nil
 //	SafeCall(func() string { panic("oh no") })       // returns "", error("panic recovered: oh no")
 //
+// The approach: defer a separate "safety net" function that recovers
+// from panics, then call fn() normally. Don't defer fn itself — defer
+// a recovery function and let fn run as a regular call.
+//
 // Hint: recover() only works inside a deferred function. The pattern is:
 //
 //	defer func() {
@@ -183,6 +187,7 @@ func Logger(fn func(string) string, log *[]string) func(string) string {
 //	        // you can set named return values here
 //	    }
 //	}()
+//	result = fn()  // call fn normally — if it panics, the defer catches it
 //
 // Note the () at the end — you're defining and calling an anonymous
 // function via defer. You need named return values so the deferred
