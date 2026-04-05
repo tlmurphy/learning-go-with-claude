@@ -2,6 +2,22 @@ package structs
 
 import "fmt"
 
+/*
+=============================================================================
+ EXERCISES: Structs and Methods
+=============================================================================
+
+ Work through these exercises in order. Run tests with:
+
+   make test 05
+
+ Run a single test:
+
+   go test -v -run TestNewUser ./05-structs-and-methods/
+
+=============================================================================
+*/
+
 // =========================================================================
 // Exercise 1: User Struct with Constructor and Methods
 // =========================================================================
