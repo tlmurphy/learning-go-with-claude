@@ -1,12 +1,19 @@
 package concurrency
 
 /*
-Exercises: Concurrency Patterns
-=================================
+=============================================================================
+ EXERCISES: Concurrency Patterns
+=============================================================================
 
-These exercises cover the essential concurrency patterns you'll use in
-production Go code. Each one builds on the primitives from Module 10 and
-combines them into real-world patterns.
+ Work through these exercises in order. Run tests with:
+
+   make test 11
+
+ Run a single test:
+
+   go test -v -run TestParallelSquare ./11-concurrency-patterns/
+
+=============================================================================
 */
 
 import (

@@ -1,14 +1,19 @@
 package testingmod
 
 /*
-Exercises: Testing (Module 12)
-================================
+=============================================================================
+ EXERCISES: Testing
+=============================================================================
 
-THIS MODULE IS INVERTED: The implementations are PROVIDED here.
-Your job is to write the TESTS in exercises_test.go.
+ Work through these exercises in order. Run tests with:
 
-The functions below are fully implemented. Read them, understand what they do,
-then write comprehensive tests for them in exercises_test.go.
+   make test 12
+
+ Run a single test:
+
+   go test -v -run TestTitleCase ./12-testing/
+
+=============================================================================
 */
 
 import (

@@ -11,12 +11,13 @@ import (
  EXERCISES: Building a REST API
 =============================================================================
 
-These exercises walk you through building a complete REST API for a Todo
-application. You'll implement each CRUD operation, add pagination, create
-consistent error responses, and build a full handler struct.
+ Work through these exercises in order. Run tests with:
 
-The Todo model and TodoStore are provided below. Your job is to implement
-the HTTP handlers.
+   make test 16
+
+ Run a single test:
+
+   go test -v -run TestCreateHandler ./16-rest-api/
 
 =============================================================================
 */

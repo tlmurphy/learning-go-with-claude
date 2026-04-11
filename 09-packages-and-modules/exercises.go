@@ -1,14 +1,19 @@
 package packages
 
 /*
-Exercises: Packages and Modules
-================================
+=============================================================================
+ EXERCISES: Packages and Modules
+=============================================================================
 
-These exercises focus on the concepts that make Go's package system powerful:
-visibility rules, initialization, API design, and proper encapsulation.
+ Work through these exercises in order. Run tests with:
 
-Since we can't create multiple packages in a single exercise file, some
-exercises simulate multi-package scenarios within one package.
+   make test 09
+
+ Run a single test:
+
+   go test -v -run TestNewBankAccount ./09-packages-and-modules/
+
+=============================================================================
 */
 
 // =============================================================================

@@ -10,13 +10,13 @@ import (
  EXERCISES: Middleware
 =============================================================================
 
-These exercises build your middleware skills from basic wrappers to a
-complete middleware chain. Middleware is where Go's HTTP model really
-shines — the composability of the http.Handler interface makes it easy
-to add cross-cutting concerns cleanly.
+ Work through these exercises in order. Run tests with:
 
-Every middleware follows the signature: func(http.Handler) http.Handler
-(or a function that returns one, for configurable middleware).
+   make test 17
+
+ Run a single test:
+
+   go test -v -run TestLoggingMW ./17-middleware/
 
 =============================================================================
 */

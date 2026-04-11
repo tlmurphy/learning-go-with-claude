@@ -1,14 +1,19 @@
 package goroutines
 
 /*
-Exercises: Goroutines and Channels
-====================================
+=============================================================================
+ EXERCISES: Goroutines and Channels
+=============================================================================
 
-These exercises build from basic goroutine usage to more complex channel
-patterns. Each one teaches a different aspect of Go's concurrency model.
+ Work through these exercises in order. Run tests with:
 
-Key rule: if you launch a goroutine, make sure it can always finish.
-Goroutine leaks are a real production problem.
+   make test 10
+
+ Run a single test:
+
+   go test -v -run TestSquareNumbers ./10-goroutines-and-channels/
+
+=============================================================================
 */
 
 import (

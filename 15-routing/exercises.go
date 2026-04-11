@@ -9,11 +9,13 @@ import (
  EXERCISES: Routing and URL Patterns
 =============================================================================
 
-These exercises build your skills with Go 1.22+ routing patterns. You'll
-work with method routing, path parameters, wildcards, subrouting, and
-custom error handling.
+ Work through these exercises in order. Run tests with:
 
-All exercises return *http.ServeMux so they can be tested with httptest.
+   make test 15
+
+ Run a single test:
+
+   go test -v -run TestMethodRouter ./15-routing/
 
 =============================================================================
 */

@@ -1,11 +1,19 @@
 package generics
 
 /*
-Exercises: Generics
-====================
+=============================================================================
+ EXERCISES: Generics
+=============================================================================
 
-These exercises build from simple generic functions to more complex generic
-data structures. Each exercise reinforces a different aspect of Go's generics.
+ Work through these exercises in order. Run tests with:
+
+   make test 13
+
+ Run a single test:
+
+   go test -v -run TestMinSlice ./13-generics/
+
+=============================================================================
 */
 
 import "fmt"

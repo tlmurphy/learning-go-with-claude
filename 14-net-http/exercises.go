@@ -10,12 +10,13 @@ import (
  EXERCISES: net/http Fundamentals
 =============================================================================
 
-These exercises build your understanding of Go's HTTP primitives from the
-ground up. You'll work with handlers, requests, responses, and the patterns
-that form the foundation of every Go web service.
+ Work through these exercises in order. Run tests with:
 
-All exercises can be tested using httptest.NewRequest and
-httptest.NewRecorder — no real server needed.
+   make test 14
+
+ Run a single test:
+
+   go test -v -run TestHelloHandler ./14-net-http/
 
 =============================================================================
 */
